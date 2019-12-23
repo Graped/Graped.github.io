@@ -84,17 +84,18 @@
 
 
 <meta name="description" content="HA集群配置HA 即 （high available）高可用，又被叫做双机热备，用于关键性业务。 简单理解就是，有两台机器A和B，正常是A提供服务，B待命闲置，当A宕机或服务宕掉，会切换至B机器继续提供服务。常用实现高可用的开源软件有heartbeat和keepalived，其中keepalived有负载均衡的功能。如图所示为一个HA架构，一个交换机下面有两台机器web1和web2，其中web1为">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HA集群配置">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/03/29/17032901/index.html">
 <meta property="og:site_name" content="DInG_BloG">
 <meta property="og:description" content="HA集群配置HA 即 （high available）高可用，又被叫做双机热备，用于关键性业务。 简单理解就是，有两台机器A和B，正常是A提供服务，B待命闲置，当A宕机或服务宕掉，会切换至B机器继续提供服务。常用实现高可用的开源软件有heartbeat和keepalived，其中keepalived有负载均衡的功能。如图所示为一个HA架构，一个交换机下面有两台机器web1和web2，其中web1为">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i.imgur.com/RKgR1gc.jpg">
-<meta property="article:published_time" content="2017-03-28T16:04:09.000Z">
-<meta property="article:modified_time" content="2017-03-28T16:12:54.305Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="linux">
+<meta property="og:updated_time" content="2017-03-28T16:12:54.305Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HA集群配置">
+<meta name="twitter:description" content="HA集群配置HA 即 （high available）高可用，又被叫做双机热备，用于关键性业务。 简单理解就是，有两台机器A和B，正常是A提供服务，B待命闲置，当A宕机或服务宕掉，会切换至B机器继续提供服务。常用实现高可用的开源软件有heartbeat和keepalived，其中keepalived有负载均衡的功能。如图所示为一个HA架构，一个交换机下面有两台机器web1和web2，其中web1为">
 <meta name="twitter:image" content="http://i.imgur.com/RKgR1gc.jpg">
 
 
@@ -141,7 +142,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -187,7 +188,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -197,7 +198,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -207,7 +208,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -217,7 +218,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -227,7 +228,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -237,7 +238,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -380,7 +381,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  6
                 </span>
               
             </div>
@@ -405,12 +406,13 @@
 <p>下面我们用heartbeat来做HA集群，并且把Nginx服务作为HA对应的服务。</p>
 <p>准备工作：<br>两个机器，都是CentOS6.5 网卡eth0 ip如下：</p>
 <pre><code>master 192.168.0.161
-slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进行）"><a href="#1-设置hostname-（主从上都要进行）" class="headerlink" title="1. 设置hostname （主从上都要进行）"></a>1. 设置hostname （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在主上</span><br><span class="line">hostname master</span><br><span class="line">bash</span><br><span class="line">#在从上</span><br><span class="line">hostname slave</span><br><span class="line">bash</span><br></pre></td></tr></table></figure>
-<h5 id="2-关闭防火墙-（主从上都要进行）"><a href="#2-关闭防火墙-（主从上都要进行）" class="headerlink" title="2. 关闭防火墙 （主从上都要进行）"></a>2. 关闭防火墙 （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># iptables</span><br><span class="line">iptables -F </span><br><span class="line">service iptables save</span><br><span class="line"># selinux</span><br><span class="line">setenforce 0</span><br><span class="line">sed -i &#39;s&#x2F;SELINUX&#x3D;enforcing&#x2F;SELINUX&#x3D;disabled&#x2F;&#39; &#x2F;etc&#x2F;selinux&#x2F;config</span><br></pre></td></tr></table></figure>
-<h5 id="3-配置hosts-（主从上都要进行）"><a href="#3-配置hosts-（主从上都要进行）" class="headerlink" title="3. 配置hosts （主从上都要进行）"></a>3. 配置hosts （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;hosts</span><br><span class="line"># 加入：</span><br><span class="line">192.168.0.161 master</span><br><span class="line">192.168.0.162 slave</span><br></pre></td></tr></table></figure>
+slave  192.168.0.162
+</code></pre><h5 id="1-设置hostname-（主从上都要进行）"><a href="#1-设置hostname-（主从上都要进行）" class="headerlink" title="1. 设置hostname （主从上都要进行）"></a>1. 设置hostname （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在主上</span><br><span class="line">hostname master</span><br><span class="line">bash</span><br><span class="line">#在从上</span><br><span class="line">hostname slave</span><br><span class="line">bash</span><br></pre></td></tr></table></figure>
+<h5 id="2-关闭防火墙-（主从上都要进行）"><a href="#2-关闭防火墙-（主从上都要进行）" class="headerlink" title="2. 关闭防火墙 （主从上都要进行）"></a>2. 关闭防火墙 （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># iptables</span><br><span class="line">iptables -F </span><br><span class="line">service iptables save</span><br><span class="line"># selinux</span><br><span class="line">setenforce 0</span><br><span class="line">sed -i &apos;s/SELINUX=enforcing/SELINUX=disabled/&apos; /etc/selinux/config</span><br></pre></td></tr></table></figure>
+<h5 id="3-配置hosts-（主从上都要进行）"><a href="#3-配置hosts-（主从上都要进行）" class="headerlink" title="3. 配置hosts （主从上都要进行）"></a>3. 配置hosts （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line"># 加入：</span><br><span class="line">192.168.0.161 master</span><br><span class="line">192.168.0.162 slave</span><br></pre></td></tr></table></figure>
 <h5 id="4-安装epel扩展源-（主从上都要进行）"><a href="#4-安装epel扩展源-（主从上都要进行）" class="headerlink" title="4. 安装epel扩展源 （主从上都要进行）"></a>4. 安装epel扩展源 （主从上都要进行）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y epel-release</span><br></pre></td></tr></table></figure>
 <h5 id="5-安装heartbeat-libnet-Nginx"><a href="#5-安装heartbeat-libnet-Nginx" class="headerlink" title="5. 安装heartbeat libnet Nginx"></a>5. 安装heartbeat libnet Nginx</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y heartbeat* libnet nginx</span><br></pre></td></tr></table></figure>
-<h5 id="6-主（master）上配置"><a href="#6-主（master）上配置" class="headerlink" title="6. 主（master）上配置"></a>6. 主（master）上配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;share&#x2F;doc&#x2F;heartbeat-3.0.4&#x2F;</span><br><span class="line">cp  authkeys  ha.cf haresources   &#x2F;etc&#x2F;ha.d&#x2F;</span><br><span class="line">cd &#x2F;etc&#x2F;ha.d</span><br><span class="line">vi  authkeys  &#x2F;&#x2F;加入或更改为</span><br><span class="line"></span><br><span class="line">auth 3</span><br><span class="line">3 md5 Hello!</span><br><span class="line"></span><br><span class="line">chmod 600 authkeys</span><br><span class="line">vi  haresources  &#x2F;&#x2F;加入</span><br><span class="line"></span><br><span class="line">master 192.168.0.150&#x2F;24&#x2F;eth0:0 nginx   </span><br><span class="line"></span><br><span class="line">vi  ha.cf   &#x2F;&#x2F;改为如下内容：</span><br><span class="line">debugfile &#x2F;var&#x2F;log&#x2F;ha-debug</span><br><span class="line">logfile &#x2F;var&#x2F;log&#x2F;ha-log</span><br><span class="line">logfacility     local0</span><br><span class="line">keepalive 2</span><br><span class="line">deadtime 30</span><br><span class="line">warntime 10</span><br><span class="line">initdead 60</span><br><span class="line">udpport 694</span><br><span class="line">ucast eth0 192.168.0.162</span><br><span class="line">auto_failback on</span><br><span class="line">node    master</span><br><span class="line">node    slave</span><br><span class="line">ping 192.168.0.1</span><br><span class="line">respawn hacluster &#x2F;usr&#x2F;lib&#x2F;heartbeat&#x2F;ipfail</span><br></pre></td></tr></table></figure>
+<h5 id="6-主（master）上配置"><a href="#6-主（master）上配置" class="headerlink" title="6. 主（master）上配置"></a>6. 主（master）上配置</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/share/doc/heartbeat-3.0.4/</span><br><span class="line">cp  authkeys  ha.cf haresources   /etc/ha.d/</span><br><span class="line">cd /etc/ha.d</span><br><span class="line">vi  authkeys  //加入或更改为</span><br><span class="line"></span><br><span class="line">auth 3</span><br><span class="line">3 md5 Hello!</span><br><span class="line"></span><br><span class="line">chmod 600 authkeys</span><br><span class="line">vi  haresources  //加入</span><br><span class="line"></span><br><span class="line">master 192.168.0.150/24/eth0:0 nginx   </span><br><span class="line"></span><br><span class="line">vi  ha.cf   //改为如下内容：</span><br><span class="line">debugfile /var/log/ha-debug</span><br><span class="line">logfile /var/log/ha-log</span><br><span class="line">logfacility     local0</span><br><span class="line">keepalive 2</span><br><span class="line">deadtime 30</span><br><span class="line">warntime 10</span><br><span class="line">initdead 60</span><br><span class="line">udpport 694</span><br><span class="line">ucast eth0 192.168.0.162</span><br><span class="line">auto_failback on</span><br><span class="line">node    master</span><br><span class="line">node    slave</span><br><span class="line">ping 192.168.0.1</span><br><span class="line">respawn hacluster /usr/lib/heartbeat/ipfail</span><br></pre></td></tr></table></figure>
 <p>配置说明：</p>
 <ul>
 <li>debugfile /var/log/ha-debug：保存heartbeat的调试信息；</li>
@@ -428,8 +430,8 @@ slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进�
 <li>dping 192.168.0.1</li>
 <li>drespawn hacluster/usr/lib/heartbeat/ipfail：指定与heartbeat一同启动和关闭的进程，该进程被自动监听视，遇到故障则从新启动。最常见的进程是ipfail，该进程用于检测和处理网络故障，需要配合ping语句指定pingnode来检测网络连接。如果你的系统是64位，请注意该文件路径</li>
 </ul>
-<h5 id="7-把主上的三个配置拷贝到从上"><a href="#7-把主上的三个配置拷贝到从上" class="headerlink" title="7. 把主上的三个配置拷贝到从上"></a>7. 把主上的三个配置拷贝到从上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;etc&#x2F;ha.d&#x2F;</span><br><span class="line">scp  authkeys  ha.cf haresources   slave:&#x2F;etc&#x2F;ha.d&#x2F;</span><br></pre></td></tr></table></figure>
-<h5 id="8-到从上-slave-编辑ha-cf"><a href="#8-到从上-slave-编辑ha-cf" class="headerlink" title="8. 到从上(slave) 编辑ha.cf"></a>8. 到从上(slave) 编辑ha.cf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi  &#x2F;etc&#x2F;ha.d&#x2F;ha.cf   &#x2F;&#x2F;只需要更改一个地方</span><br><span class="line">ucast eth1 192.168.0.162 改为   ucast eth1 192.168.0.161</span><br></pre></td></tr></table></figure>
+<h5 id="7-把主上的三个配置拷贝到从上"><a href="#7-把主上的三个配置拷贝到从上" class="headerlink" title="7. 把主上的三个配置拷贝到从上"></a>7. 把主上的三个配置拷贝到从上</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/ha.d/</span><br><span class="line">scp  authkeys  ha.cf haresources   slave:/etc/ha.d/</span><br></pre></td></tr></table></figure>
+<h5 id="8-到从上-slave-编辑ha-cf"><a href="#8-到从上-slave-编辑ha-cf" class="headerlink" title="8. 到从上(slave) 编辑ha.cf"></a>8. 到从上(slave) 编辑ha.cf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi  /etc/ha.d/ha.cf   //只需要更改一个地方</span><br><span class="line">ucast eth1 192.168.0.162 改为   ucast eth1 192.168.0.161</span><br></pre></td></tr></table></figure>
 <h5 id="9-启动heartbeat"><a href="#9-启动heartbeat" class="headerlink" title="9. 启动heartbeat"></a>9. 启动heartbeat</h5><p>先主后从</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service heartbeat start</span><br></pre></td></tr></table></figure>
 <h5 id="10-检查测试"><a href="#10-检查测试" class="headerlink" title="10. 检查测试"></a>10. 检查测试</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
@@ -439,7 +441,7 @@ slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进�
 <h5 id="11-测试1"><a href="#11-测试1" class="headerlink" title="11.  测试1"></a>11.  测试1</h5><p>主上故意禁ping</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables -I INPUT -p icmp -j DROP</span><br></pre></td></tr></table></figure>
 <p>可以看到日志/var/log/ha-log 发生如下变化</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ResourceManager(default)[1751]: 2017&#x2F;03&#x2F;28_23:01:07 info: Running &#x2F;etc&#x2F;init.d&#x2F;nginx  start</span><br><span class="line">Mar 28 23:06:49 master heartbeat: [1543]: WARN: node 192.168.0.1: is dead</span><br><span class="line">Mar 28 23:06:49 master heartbeat: [1543]: info: Link 192.168.0.1:192.168.0.1 dead.</span><br><span class="line">Mar 28 23:06:49 master ipfail: [1571]: info: Status update: Node 192.168.0.1 now has status dead</span><br><span class="line">harc(default)[2053]:    2017&#x2F;03&#x2F;28_23:06:49 info: Running &#x2F;etc&#x2F;ha.d&#x2F;&#x2F;rc.d&#x2F;status status</span><br><span class="line">Mar 28 23:06:51 master ipfail: [1571]: info: NS: We are dead. :&lt;</span><br><span class="line">Mar 28 23:06:51 master ipfail: [1571]: info: Link Status update: Link 192.168.0.1&#x2F;192.168.0.1 now has status dead</span><br><span class="line">Mar 28 23:06:52 master ipfail: [1571]: info: We are dead. :&lt;</span><br><span class="line">Mar 28 23:06:52 master ipfail: [1571]: info: Asking other side for ping node count.</span><br><span class="line">Mar 28 23:06:55 master ipfail: [1571]: info: Giving up because we were told that we have less ping nodes.</span><br><span class="line">Mar 28 23:06:55 master ipfail: [1571]: info: Delayed giveup in 4 seconds.</span><br><span class="line">Mar 28 23:06:59 master ipfail: [1571]: info: giveup() called (timeout worked)</span><br><span class="line">Mar 28 23:06:59 master heartbeat: [1543]: info: master wants to go standby [all]</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [1543]: info: standby: slave can take our all resources</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [2079]: info: give up all HA resources (standby).</span><br><span class="line">ResourceManager(default)[2092]: 2017&#x2F;03&#x2F;28_23:07:00 info: Releasing resource group: master 192.168.0.150&#x2F;24&#x2F;eth0:0 nginx</span><br><span class="line">ResourceManager(default)[2092]: 2017&#x2F;03&#x2F;28_23:07:00 info: Running &#x2F;etc&#x2F;init.d&#x2F;nginx  stop</span><br><span class="line">ResourceManager(default)[2092]: 2017&#x2F;03&#x2F;28_23:07:00 info: Running &#x2F;etc&#x2F;ha.d&#x2F;resource.d&#x2F;IPaddr 192.168.0.150&#x2F;24&#x2F;eth0:0 stop</span><br><span class="line">IPaddr(IPaddr_192.168.0.150)[2178]:     2017&#x2F;03&#x2F;28_23:07:00 INFO: IP status &#x3D; ok, IP_CIP&#x3D;</span><br><span class="line">&#x2F;usr&#x2F;lib&#x2F;ocf&#x2F;resource.d&#x2F;&#x2F;heartbeat&#x2F;IPaddr(IPaddr_192.168.0.150)[2152]:  2017&#x2F;03&#x2F;28_23:07:00 INFO:  Success</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [2079]: info: all HA resource release completed (standby).</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [1543]: info: Local standby process completed [all].</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: WARN: 1 lost packet(s) for [slave] [197:199]</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: info: remote resource transition completed.</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: info: No pkts missing from slave!</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: info: Other node completed standby takeover of all resources.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">ResourceManager(default)[1751]: 2017/03/28_23:01:07 info: Running /etc/init.d/nginx  start</span><br><span class="line">Mar 28 23:06:49 master heartbeat: [1543]: WARN: node 192.168.0.1: is dead</span><br><span class="line">Mar 28 23:06:49 master heartbeat: [1543]: info: Link 192.168.0.1:192.168.0.1 dead.</span><br><span class="line">Mar 28 23:06:49 master ipfail: [1571]: info: Status update: Node 192.168.0.1 now has status dead</span><br><span class="line">harc(default)[2053]:    2017/03/28_23:06:49 info: Running /etc/ha.d//rc.d/status status</span><br><span class="line">Mar 28 23:06:51 master ipfail: [1571]: info: NS: We are dead. :&lt;</span><br><span class="line">Mar 28 23:06:51 master ipfail: [1571]: info: Link Status update: Link 192.168.0.1/192.168.0.1 now has status dead</span><br><span class="line">Mar 28 23:06:52 master ipfail: [1571]: info: We are dead. :&lt;</span><br><span class="line">Mar 28 23:06:52 master ipfail: [1571]: info: Asking other side for ping node count.</span><br><span class="line">Mar 28 23:06:55 master ipfail: [1571]: info: Giving up because we were told that we have less ping nodes.</span><br><span class="line">Mar 28 23:06:55 master ipfail: [1571]: info: Delayed giveup in 4 seconds.</span><br><span class="line">Mar 28 23:06:59 master ipfail: [1571]: info: giveup() called (timeout worked)</span><br><span class="line">Mar 28 23:06:59 master heartbeat: [1543]: info: master wants to go standby [all]</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [1543]: info: standby: slave can take our all resources</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [2079]: info: give up all HA resources (standby).</span><br><span class="line">ResourceManager(default)[2092]: 2017/03/28_23:07:00 info: Releasing resource group: master 192.168.0.150/24/eth0:0 nginx</span><br><span class="line">ResourceManager(default)[2092]: 2017/03/28_23:07:00 info: Running /etc/init.d/nginx  stop</span><br><span class="line">ResourceManager(default)[2092]: 2017/03/28_23:07:00 info: Running /etc/ha.d/resource.d/IPaddr 192.168.0.150/24/eth0:0 stop</span><br><span class="line">IPaddr(IPaddr_192.168.0.150)[2178]:     2017/03/28_23:07:00 INFO: IP status = ok, IP_CIP=</span><br><span class="line">/usr/lib/ocf/resource.d//heartbeat/IPaddr(IPaddr_192.168.0.150)[2152]:  2017/03/28_23:07:00 INFO:  Success</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [2079]: info: all HA resource release completed (standby).</span><br><span class="line">Mar 28 23:07:00 master heartbeat: [1543]: info: Local standby process completed [all].</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: WARN: 1 lost packet(s) for [slave] [197:199]</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: info: remote resource transition completed.</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: info: No pkts missing from slave!</span><br><span class="line">Mar 28 23:07:02 master heartbeat: [1543]: info: Other node completed standby takeover of all resources.</span><br></pre></td></tr></table></figure>
 <h5 id="12-测试2"><a href="#12-测试2" class="headerlink" title="12. 测试2"></a>12. 测试2</h5><p>主上停止heartbeat服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service heartbeat stop</span><br></pre></td></tr></table></figure>
 
@@ -581,7 +583,7 @@ slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进�
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -707,7 +709,7 @@ slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进�
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -724,6 +726,11 @@ slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进�
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -887,7 +894,7 @@ slave  192.168.0.162</code></pre><h5 id="1-设置hostname-（主从上都要进�
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

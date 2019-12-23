@@ -84,17 +84,18 @@
 
 
 <meta name="description" content="使用ansible-playbook推送安装nginx 本文主要介绍了如何将ansible-playbook投入生产中，下面我们以推送安装nginx举例  1. 思路： 现在主机上编译，配置好nginx， 然后将安装程序目录打包 最后用ansible分发下去  2. 流程图如下： 3. 执行配置过程3.1 编译安装nginx详见： 编译安装Nginx3.2 创建ansible roles目录结构1">
+<meta name="keywords" content="ansible">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用ansible-playbook推送安装nginx">
-<meta property="og:url" content="http://www.grapedlinux.cn/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/index.html">
+<meta property="og:url" content="http://www.grapedlinux.cn/2018/10/12/使用ansible-playbook推送安装nginx/index.html">
 <meta property="og:site_name" content="DInG_BloG">
 <meta property="og:description" content="使用ansible-playbook推送安装nginx 本文主要介绍了如何将ansible-playbook投入生产中，下面我们以推送安装nginx举例  1. 思路： 现在主机上编译，配置好nginx， 然后将安装程序目录打包 最后用ansible分发下去  2. 流程图如下： 3. 执行配置过程3.1 编译安装nginx详见： 编译安装Nginx3.2 创建ansible roles目录结构1">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s1.ax1x.com/2018/10/11/itW3sf.png">
-<meta property="article:published_time" content="2018-10-12T14:57:12.000Z">
-<meta property="article:modified_time" content="2019-12-23T14:17:32.031Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="ansible">
+<meta property="og:updated_time" content="2019-12-23T14:17:32.031Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用ansible-playbook推送安装nginx">
+<meta name="twitter:description" content="使用ansible-playbook推送安装nginx 本文主要介绍了如何将ansible-playbook投入生产中，下面我们以推送安装nginx举例  1. 思路： 现在主机上编译，配置好nginx， 然后将安装程序目录打包 最后用ansible分发下去  2. 流程图如下： 3. 执行配置过程3.1 编译安装nginx详见： 编译安装Nginx3.2 创建ansible roles目录结构1">
 <meta name="twitter:image" content="https://s1.ax1x.com/2018/10/11/itW3sf.png">
 
 
@@ -141,7 +142,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -187,7 +188,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -197,7 +198,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -207,7 +208,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -217,7 +218,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -227,7 +228,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -237,7 +238,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -316,7 +317,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/">
+    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2018/10/12/使用ansible-playbook推送安装nginx/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Graped">
@@ -368,7 +369,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E8%BF%90%E7%BB%B4/" itemprop="url" rel="index">
+                  <a href="/categories/自动化运维/" itemprop="url" rel="index">
                     <span itemprop="name">自动化运维</span>
                   </a>
                 </span>
@@ -402,7 +403,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  2
                 </span>
               
             </div>
@@ -432,8 +433,7 @@
 <li>最后用ansible分发下去</li>
 </ul>
 <h4 id="2-流程图如下："><a href="#2-流程图如下：" class="headerlink" title="2. 流程图如下："></a>2. 流程图如下：</h4><p><img src="https://s1.ax1x.com/2018/10/11/itW3sf.png" alt="image"></p>
-<h4 id="3-执行配置过程"><a href="#3-执行配置过程" class="headerlink" title="3. 执行配置过程"></a>3. 执行配置过程</h4><h5 id="3-1-编译安装nginx详见：-编译安装Nginx"><a href="#3-1-编译安装nginx详见：-编译安装Nginx" class="headerlink" title="3.1 编译安装nginx详见： 编译安装Nginx"></a>3.1 编译安装nginx详见： <a href="http://note.youdao.com/noteshare?id=b73effc8df9b50ad2b63f8f0ed2ba676&sub=0D01183B5BCA44C593B382FB2AE2FE3D" target="_blank" rel="noopener">编译安装Nginx</a></h5><h5 id="3-2-创建ansible-roles目录结构"><a href="#3-2-创建ansible-roles目录结构" class="headerlink" title="3.2 创建ansible roles目录结构"></a>3.2 创建ansible roles目录结构</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/ansible/</span><br><span class="line">mkdir -pv nginx_install/rolse/&#123;common,install&#125;/&#123;handlers,files,meta,tasks,templates,vars&#125;</span><br></pre></td></tr></table></figure>
-
+<h4 id="3-执行配置过程"><a href="#3-执行配置过程" class="headerlink" title="3. 执行配置过程"></a>3. 执行配置过程</h4><h5 id="3-1-编译安装nginx详见：-编译安装Nginx"><a href="#3-1-编译安装nginx详见：-编译安装Nginx" class="headerlink" title="3.1 编译安装nginx详见： 编译安装Nginx"></a>3.1 编译安装nginx详见： <a href="http://note.youdao.com/noteshare?id=b73effc8df9b50ad2b63f8f0ed2ba676&amp;sub=0D01183B5BCA44C593B382FB2AE2FE3D" target="_blank" rel="noopener">编译安装Nginx</a></h5><h5 id="3-2-创建ansible-roles目录结构"><a href="#3-2-创建ansible-roles目录结构" class="headerlink" title="3.2 创建ansible roles目录结构"></a>3.2 创建ansible roles目录结构</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="built_in">cd</span> /etc/ansible/</span><br><span class="line">mkdir -pv nginx_install/rolse/&#123;common,install&#125;/&#123;handlers,files,meta,tasks,templates,vars&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>说明：</p>
 <ul>
@@ -450,17 +450,11 @@
 </ul>
 </blockquote>
 <h5 id="3-3-将安装好的nginx程序包打包，并放到-install-files-下面，启动脚本-放入-install-templates中，"><a href="#3-3-将安装好的nginx程序包打包，并放到-install-files-下面，启动脚本-放入-install-templates中，" class="headerlink" title="3.3 将安装好的nginx程序包打包，并放到 $/install/files/ 下面，启动脚本 放入$/install/templates中，"></a>3.3 将安装好的nginx程序包打包，并放到 <code>$/install/files/</code> 下面，启动脚本 放入<code>$/install/templates</code>中，</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/init.d/nginx /root/nginx_install/rolse/install/templates/nginx</span><br><span class="line">mv nginx.tar.gz /root/nginx_install/rolse/install/files/</span><br><span class="line">cp nginx/conf/nginx.conf /root/nginx_install/rolse/install/templates/</span><br></pre></td></tr></table></figure>
-
 <h5 id="3-4-在common目录下定义安装nginx的依赖包任务"><a href="#3-4-在common目录下定义安装nginx的依赖包任务" class="headerlink" title="3.4 在common目录下定义安装nginx的依赖包任务"></a>3.4 在common目录下定义安装nginx的依赖包任务</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> common/tasks</span><br><span class="line">vim main.yml</span><br><span class="line"></span><br><span class="line">- name: install initaliztion require software</span><br><span class="line">  <span class="comment">#yum: name=&#123;&#123; items &#125;&#125; state=installed</span></span><br><span class="line">  yum: name=<span class="string">"pcre-devel,zlib-devel"</span></span><br><span class="line">  <span class="comment">#with_item</span></span><br><span class="line">  <span class="comment">#   - zlib-devel </span></span><br><span class="line">  <span class="comment">#   - prce-devel</span></span><br></pre></td></tr></table></figure>
-
 <h5 id="3-5-定义变量"><a href="#3-5-定义变量" class="headerlink" title="3.5 定义变量"></a>3.5 定义变量</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> install/vars/main.yml</span><br><span class="line"></span><br><span class="line">nginx_user: www</span><br><span class="line">nginx_port: 80</span><br><span class="line">nginx_basedir: /usr/<span class="built_in">local</span>/nginx</span><br></pre></td></tr></table></figure>
-
 <h5 id="3-6-定义拷贝操作"><a href="#3-6-定义拷贝操作" class="headerlink" title="3.6 定义拷贝操作"></a>3.6 定义拷贝操作</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim  install/tasks/copy.yml</span><br><span class="line"></span><br><span class="line">- name: Copy Nginx Software</span><br><span class="line">  copy: src=nginx.tar.gz dest=/tmp/nginx.tar.gz owner=root group=root</span><br><span class="line">- name: Uncommpreesion Nginx Software</span><br><span class="line">  shell: tar -zxf /tmp/nginx.tar.gz -C /usr/<span class="built_in">local</span></span><br><span class="line">- name: Copy Nginx Start Scrpit</span><br><span class="line">  template: src=nginx dest=/etc/init.d/nginx owner=root group=root mode=0755</span><br><span class="line">- name: Copy Nginx Config</span><br><span class="line">  template: src=nginx.conf dest=&#123;&#123; nginx_basedir &#125;&#125;/conf/ owner=root group=root mode=0644</span><br></pre></td></tr></table></figure>
-
 <h5 id="3-7-创建安装总线"><a href="#3-7-创建安装总线" class="headerlink" title="3.7 创建安装总线"></a>3.7 创建安装总线</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vim install/tasks/install.yml </span><br><span class="line"> </span><br><span class="line">- name: Creat Nginx User </span><br><span class="line">  user: name=&#123;&#123; nginx_user &#125;&#125; state=present createhome=no shell=/sbin/nologin</span><br><span class="line">- name: Start Nginx Service </span><br><span class="line">  shell: /etc/init.d/nginx start</span><br><span class="line">- name: Add Boot Start Nginx Service</span><br><span class="line">  shell: chkconfig --level 345 nginx on</span><br><span class="line">- name : Delete Nginx Commpression files</span><br><span class="line">  shell: mv /tmp/nginx.tar.gz /tmp/old.tgz</span><br></pre></td></tr></table></figure>
-
 <h5 id="3-8-创建执行总线"><a href="#3-8-创建执行总线" class="headerlink" title="3.8 创建执行总线"></a>3.8 创建执行总线</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim install/tasks/main.yml</span><br><span class="line"></span><br><span class="line">- include: copy.yml</span><br><span class="line">- include: install.yml</span><br></pre></td></tr></table></figure>
-
 <h5 id="3-9-创建入口配置文件"><a href="#3-9-创建入口配置文件" class="headerlink" title="3.9 创建入口配置文件"></a>3.9 创建入口配置文件</h5><pre><code class="bash">vim install.yml
 
 ---
@@ -469,7 +463,8 @@
   gather_facts: True
   roles:
     - common
-    - install</code></pre>
+    - install
+</code></pre>
 
       
     </div>
@@ -490,7 +485,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.grapedlinux.cn/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/" title="使用ansible-playbook推送安装nginx">http://www.grapedlinux.cn/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/</a>
+    <a href="http://www.grapedlinux.cn/2018/10/12/使用ansible-playbook推送安装nginx/" title="使用ansible-playbook推送安装nginx">http://www.grapedlinux.cn/2018/10/12/使用ansible-playbook推送安装nginx/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -518,7 +513,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/08/Ansible%E4%BB%8B%E7%BB%8D/" rel="next" title="Ansible详解">
+              <a href="/2018/10/08/Ansible介绍/" rel="next" title="Ansible详解">
                 <i class="fa fa-chevron-left"></i> Ansible详解
               </a>
             
@@ -528,7 +523,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/19/python%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8Cpycharm%E7%9A%84%E4%BD%BF%E7%94%A8/" rel="prev" title="python的安装和pycharm的使用">
+              <a href="/2018/11/19/python的安装和pycharm的使用/" rel="prev" title="python的安装和pycharm的使用">
                 python的安装和pycharm的使用 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -609,7 +604,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -701,7 +696,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用ansible-playbook推送安装nginx"><span class="nav-number">1.</span> <span class="nav-text">使用ansible-playbook推送安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-思路："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. 思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-流程图如下："><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. 流程图如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-执行配置过程"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. 执行配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-编译安装nginx详见：-编译安装Nginx"><span class="nav-number">1.0.0.3.1.</span> <span class="nav-text">3.1 编译安装nginx详见： 编译安装Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-创建ansible-roles目录结构"><span class="nav-number">1.0.0.3.2.</span> <span class="nav-text">3.2 创建ansible roles目录结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-将安装好的nginx程序包打包，并放到-install-files-下面，启动脚本-放入-install-templates中，"><span class="nav-number">1.0.0.3.3.</span> <span class="nav-text">3.3 将安装好的nginx程序包打包，并放到 $&#x2F;install&#x2F;files&#x2F; 下面，启动脚本 放入$&#x2F;install&#x2F;templates中，</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-在common目录下定义安装nginx的依赖包任务"><span class="nav-number">1.0.0.3.4.</span> <span class="nav-text">3.4 在common目录下定义安装nginx的依赖包任务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-定义变量"><span class="nav-number">1.0.0.3.5.</span> <span class="nav-text">3.5 定义变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-定义拷贝操作"><span class="nav-number">1.0.0.3.6.</span> <span class="nav-text">3.6 定义拷贝操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-创建安装总线"><span class="nav-number">1.0.0.3.7.</span> <span class="nav-text">3.7 创建安装总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-8-创建执行总线"><span class="nav-number">1.0.0.3.8.</span> <span class="nav-text">3.8 创建执行总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-9-创建入口配置文件"><span class="nav-number">1.0.0.3.9.</span> <span class="nav-text">3.9 创建入口配置文件</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用ansible-playbook推送安装nginx"><span class="nav-number">1.</span> <span class="nav-text">使用ansible-playbook推送安装nginx</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-思路："><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1. 思路：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-流程图如下："><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2. 流程图如下：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-执行配置过程"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3. 执行配置过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-编译安装nginx详见：-编译安装Nginx"><span class="nav-number">1.0.0.3.1.</span> <span class="nav-text">3.1 编译安装nginx详见： 编译安装Nginx</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-创建ansible-roles目录结构"><span class="nav-number">1.0.0.3.2.</span> <span class="nav-text">3.2 创建ansible roles目录结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-将安装好的nginx程序包打包，并放到-install-files-下面，启动脚本-放入-install-templates中，"><span class="nav-number">1.0.0.3.3.</span> <span class="nav-text">3.3 将安装好的nginx程序包打包，并放到 $/install/files/ 下面，启动脚本 放入$/install/templates中，</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-在common目录下定义安装nginx的依赖包任务"><span class="nav-number">1.0.0.3.4.</span> <span class="nav-text">3.4 在common目录下定义安装nginx的依赖包任务</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-定义变量"><span class="nav-number">1.0.0.3.5.</span> <span class="nav-text">3.5 定义变量</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-定义拷贝操作"><span class="nav-number">1.0.0.3.6.</span> <span class="nav-text">3.6 定义拷贝操作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-7-创建安装总线"><span class="nav-number">1.0.0.3.7.</span> <span class="nav-text">3.7 创建安装总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-8-创建执行总线"><span class="nav-number">1.0.0.3.8.</span> <span class="nav-text">3.8 创建执行总线</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-9-创建入口配置文件"><span class="nav-number">1.0.0.3.9.</span> <span class="nav-text">3.9 创建入口配置文件</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -735,7 +730,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -752,6 +747,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -915,7 +915,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

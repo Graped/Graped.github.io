@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="作为系统默认自带的ftp服务软件，vsftpd使用也是挺多的，下面介绍一下vsftpd。  安装vsftpd  1yum install -y vsftpd db4-utils 这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。2. ##### 建立账号vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。">
+<meta name="description" content="作为系统默认自带的ftp服务软件，vsftpd使用也是挺多的，下面介绍一下vsftpd。  安装vsftpd  1yum install -y vsftpd db4-utils 这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。  建立账号vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。  i. 建立虚">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vftp 部署和优化">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/03/21/17032101/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="作为系统默认自带的ftp服务软件，vsftpd使用也是挺多的，下面介绍一下vsftpd。  安装vsftpd  1yum install -y vsftpd db4-utils 这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。2. ##### 建立账号vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。">
-<meta property="article:published_time" content="2017-03-20T16:38:33.000Z">
-<meta property="article:modified_time" content="2017-03-20T16:42:25.539Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="linux">
+<meta property="og:description" content="作为系统默认自带的ftp服务软件，vsftpd使用也是挺多的，下面介绍一下vsftpd。  安装vsftpd  1yum install -y vsftpd db4-utils 这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。  建立账号vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。  i. 建立虚">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-20T16:42:25.539Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vftp 部署和优化">
+<meta name="twitter:description" content="作为系统默认自带的ftp服务软件，vsftpd使用也是挺多的，下面介绍一下vsftpd。  安装vsftpd  1yum install -y vsftpd db4-utils 这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。  建立账号vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。  i. 建立虚">
 
 
 
@@ -139,7 +140,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -185,7 +186,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -195,7 +196,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -205,7 +206,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -215,7 +216,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -225,7 +226,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -235,7 +236,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -378,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  2
                 </span>
               
             </div>
@@ -404,29 +405,30 @@
 <li><h5 id="安装vsftpd"><a href="#安装vsftpd" class="headerlink" title="安装vsftpd"></a>安装vsftpd</h5></li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y vsftpd db4-utils</span><br></pre></td></tr></table></figure>
-<p>这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。<br>2. ##### 建立账号<br>vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。</p>
+<p>这里安装两个软件包，同时会把依赖的包安装上。其中db4-utils 用来生成密码库文件。</p>
+<ol start="2">
+<li><h5 id="建立账号"><a href="#建立账号" class="headerlink" title="建立账号"></a>建立账号</h5>vsftpd默认是可以支持使用系统账号体系登录的，但那样不太安全，我们可以参考下面的方法使用虚拟账号体系。</li>
+</ol>
 <p>i. <strong>建立虚拟账号相关联的系统账号</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd virftp -s &#x2F;sbin&#x2F;nologin</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd virftp -s /sbin/nologin</span><br></pre></td></tr></table></figure>
 <p>ii. ###### 建立虚拟账户的相关文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_login &#x2F;&#x2F;内容如下</span><br><span class="line">test1</span><br><span class="line">111222aaa</span><br><span class="line">test2</span><br><span class="line">aaa111ddd</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd_login //内容如下</span><br><span class="line">test1</span><br><span class="line">111222aaa</span><br><span class="line">test2</span><br><span class="line">aaa111ddd</span><br></pre></td></tr></table></figure>
 <p>iii. ######更改该文件的权限，提升安全级别</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_login</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 /etc/vsftpd/vsftpd_login</span><br></pre></td></tr></table></figure>
 <p>iv. ######vsftpd 使用的密码文件肯定不是明文的，需要生成对应的库文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db_load -T -t hash -f &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_login &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_login.db</span><br></pre></td></tr></table></figure>
-<p>v. ######建立虚拟账号相关的目录以及配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_user_conf</span><br><span class="line">cd &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_user_conf</span><br></pre></td></tr></table></figure>
-<h5 id="3-创建和用户对应的配置文件"><a href="#3-创建和用户对应的配置文件" class="headerlink" title="3. 创建和用户对应的配置文件"></a>3. 创建和用户对应的配置文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim test1 &#x2F;&#x2F;内容如下：</span><br><span class="line">local_root&#x3D;&#x2F;home&#x2F;virftp&#x2F;test1</span><br><span class="line">anonymous_enable&#x3D;NO</span><br><span class="line">write_enable&#x3D;NO</span><br><span class="line">local_umask&#x3D;022</span><br><span class="line">anon_upload_enable&#x3D;NO</span><br><span class="line">anon_mkdir_write_enable&#x3D;NO</span><br><span class="line">idle_session_timeout&#x3D;600</span><br><span class="line">data_connection_timeout&#x3D;120</span><br><span class="line">max_clients&#x3D;10</span><br><span class="line">max_per_ip&#x3D;5</span><br><span class="line">local_max_rate&#x3D;50000</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">db_load -T -t hash -f /etc/vsftpd/vsftpd_login /etc/vsftpd/vsftpd_login.db</span><br></pre></td></tr></table></figure>
+<p>v. ######建立虚拟账号相关的目录以及配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /etc/vsftpd/vsftpd_user_conf</span><br><span class="line">cd /etc/vsftpd/vsftpd_user_conf</span><br></pre></td></tr></table></figure></p>
+<h5 id="3-创建和用户对应的配置文件"><a href="#3-创建和用户对应的配置文件" class="headerlink" title="3. 创建和用户对应的配置文件"></a>3. 创建和用户对应的配置文件</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim test1 //内容如下：</span><br><span class="line">local_root=/home/virftp/test1</span><br><span class="line">anonymous_enable=NO</span><br><span class="line">write_enable=NO</span><br><span class="line">local_umask=022</span><br><span class="line">anon_upload_enable=NO</span><br><span class="line">anon_mkdir_write_enable=NO</span><br><span class="line">idle_session_timeout=600</span><br><span class="line">data_connection_timeout=120</span><br><span class="line">max_clients=10</span><br><span class="line">max_per_ip=5</span><br><span class="line">local_max_rate=50000</span><br></pre></td></tr></table></figure>
 <p>说明：<br>local_root 表示该账号的家目录；<br>anonymous_enable 用来限制是否允许匿名账号登录；<br>write_enable 表示是否可写；<br>local_umask 指定umask值；<br>non_upload_enable 是否允许匿名账号上传文件；<br>non_mkdir_write_enable 是否允许匿名账号可写；<br>idle_session_timeout=600 空闲会话超时；<br>data_connection_timeout=120 数据链接超时;<br>max_clients=10 最大链接数<br>local_max_rate=50000 传输速度<br>以上是关键配置参数，其他暂时不用关心。创建test2账号的步骤和test1一样。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;home&#x2F;virftp&#x2F;test1</span><br><span class="line">chown -R virftp:virftp &#x2F;homevirftp</span><br><span class="line">vim &#x2F;etc&#x2F;pam.d&#x2F;vsftpd &#x2F;&#x2F;在最开头添加两行：</span><br><span class="line">auth sufficient &#x2F;lib&#x2F;security&#x2F;pam_userdb.so db&#x3D;&#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_login</span><br><span class="line">account sufficient &#x2F;lib&#x2F;security&#x2F;pam_userdb.so db&#x3D;&#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_login</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/virftp/test1</span><br><span class="line">chown -R virftp:virftp /homevirftp</span><br><span class="line">vim /etc/pam.d/vsftpd //在最开头添加两行：</span><br><span class="line">auth sufficient /lib/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login</span><br><span class="line">account sufficient /lib/security/pam_userdb.so db=/etc/vsftpd/vsftpd_login</span><br></pre></td></tr></table></figure>
 <p>说明：32位系统的库文件路径为：/lib/security/pam_uesrdb.so ；64位系统为：/lib64/security/pam_uesrdb.so</p>
-<h5 id="3-修改全局配置文件-etc-vsftpd-conf"><a href="#3-修改全局配置文件-etc-vsftpd-conf" class="headerlink" title="3. 修改全局配置文件/etc/vsftpd.conf"></a>3. 修改全局配置文件/etc/vsftpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;vsftpd&#x2F;vsftpd.conf</span><br></pre></td></tr></table></figure>
+<h5 id="3-修改全局配置文件-etc-vsftpd-conf"><a href="#3-修改全局配置文件-etc-vsftpd-conf" class="headerlink" title="3. 修改全局配置文件/etc/vsftpd.conf"></a>3. 修改全局配置文件/etc/vsftpd.conf</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/vsftpd/vsftpd.conf</span><br></pre></td></tr></table></figure>
 <p>修改内容为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable&#x3D;NO</span><br><span class="line">local_enable&#x3D;YES</span><br><span class="line">write_enable&#x3D;YES</span><br><span class="line">anon_upload_enable&#x3D;NO</span><br><span class="line">anon_mkdir_write_enable&#x3D;NO</span><br><span class="line">chroot_local_user&#x3D;YES</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">anonymous_enable=NO</span><br><span class="line">local_enable=YES</span><br><span class="line">write_enable=YES</span><br><span class="line">anon_upload_enable=NO</span><br><span class="line">anon_mkdir_write_enable=NO</span><br><span class="line">chroot_local_user=YES</span><br></pre></td></tr></table></figure>
 <p>添加内容为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">guest_enable&#x3D;YES</span><br><span class="line">guest_username&#x3D;virftp</span><br><span class="line">virtual_use_local_privs&#x3D;YES</span><br><span class="line">user_config_dir&#x3D;&#x2F;etc&#x2F;vsftpd&#x2F;vsftpd_user_conf</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">guest_enable=YES</span><br><span class="line">guest_username=virftp</span><br><span class="line">virtual_use_local_privs=YES</span><br><span class="line">user_config_dir=/etc/vsftpd/vsftpd_user_conf</span><br></pre></td></tr></table></figure>
 <p>至此可以启动vsftp服务了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;vsftpd start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/vsftpd start</span><br></pre></td></tr></table></figure>
 <p>在21端口没有被占用的前提下，可以成功启动。如果用户登录不了，请查看一下/var/log/secure 日志。</p>
 
       
@@ -567,7 +569,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -659,7 +661,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装vsftpd"><span class="nav-number">1.</span> <span class="nav-text">安装vsftpd</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-创建和用户对应的配置文件"><span class="nav-number">2.</span> <span class="nav-text">3. 创建和用户对应的配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-修改全局配置文件-etc-vsftpd-conf"><span class="nav-number">3.</span> <span class="nav-text">3. 修改全局配置文件&#x2F;etc&#x2F;vsftpd.conf</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装vsftpd"><span class="nav-number">1.</span> <span class="nav-text">安装vsftpd</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#建立账号"><span class="nav-number">2.</span> <span class="nav-text">建立账号</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-创建和用户对应的配置文件"><span class="nav-number">3.</span> <span class="nav-text">3. 创建和用户对应的配置文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-修改全局配置文件-etc-vsftpd-conf"><span class="nav-number">4.</span> <span class="nav-text">3. 修改全局配置文件/etc/vsftpd.conf</span></a></li></ol></div>
             
 
           </div>
@@ -693,7 +695,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -710,6 +712,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -873,7 +880,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

@@ -83,12 +83,14 @@
 
 
 
-<meta name="description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat&#x2F;conf&#x2F;目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
+<meta name="description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat/conf/目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
+<meta name="keywords" content="nginx,java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx+tomcat 配置负载均衡集群">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/04/04/17040401/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat&#x2F;conf&#x2F;目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
+<meta property="og:description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat/conf/目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png">
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0328/160419_P4o4_3203872.png">
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0328/160549_uR0Y_3203872.png">
@@ -105,11 +107,10 @@
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/113005_QuQG_3203872.png">
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/112827_dFRT_3203872.png">
 <meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/112757_RGPA_3203872.png">
-<meta property="article:published_time" content="2017-04-04T02:38:51.000Z">
-<meta property="article:modified_time" content="2017-04-04T03:40:09.996Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="nginx,java">
+<meta property="og:updated_time" content="2017-04-04T03:40:09.996Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nginx+tomcat 配置负载均衡集群">
+<meta name="twitter:description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat/conf/目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
 <meta name="twitter:image" content="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png">
 
 
@@ -156,7 +157,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -202,7 +203,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -212,7 +213,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -222,7 +223,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -232,7 +233,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -242,7 +243,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -252,7 +253,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -383,7 +384,7 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" itemprop="url" rel="index">
+                  <a href="/categories/负载均衡/" itemprop="url" rel="index">
                     <span itemprop="name">负载均衡</span>
                   </a>
                 </span>
@@ -417,7 +418,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  2
                 </span>
               
             </div>
@@ -439,16 +440,26 @@
 
       
         <h5 id="一、Hello-world"><a href="#一、Hello-world" class="headerlink" title="一、Hello world"></a>一、Hello world</h5><h6 id="1、前期环境准备"><a href="#1、前期环境准备" class="headerlink" title="1、前期环境准备"></a>1、前期环境准备</h6><ol>
-<li>准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：<br>首先去<a href="http://tomcat.apache.org/download-70.cgi" target="_blank" rel="noopener">apache tomcat官网</a>下载一个tomcat解压版。<img src="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png" alt="image"><br>解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，<br><img src="https://static.oschina.net/uploads/space/2017/0328/160419_P4o4_3203872.png" alt="image"><br>然后修改server.xml配置文件，分别进入tomcat/conf/目录，修改server.xml，一共三处。<br><img src="https://static.oschina.net/uploads/space/2017/0328/160549_uR0Y_3203872.png" alt="image"><br>第一处：<br><img src="https://static.oschina.net/uploads/space/2017/0329/094952_RXZx_3203872.png" alt="image"><br>第二处、tomcat访问端口号：<br><img src="https://static.oschina.net/uploads/space/2017/0329/095118_fqsy_3203872.png" alt="image"><br>第三处：<br><img src="https://static.oschina.net/uploads/space/2017/0329/095239_9NmQ_3203872.png" alt="image"><br>之后修改bin下的启动文件<br>分别进入tomcat/bin目录，修改 startup.bat<br>在文件第一行添加如下配置（添加时删除#注释，在startup.bat文件中rem代表注释）：在文件第一行添加如下配置（添加时删除#注释，在startup.bat文件中rem代表注释）：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># tomcat名称</span><br><span class="line">set TITLE&#x3D;&quot;tomcat1&quot;</span><br><span class="line"># tomcat启动路径</span><br><span class="line">set CATALINA_BASE&#x3D;&quot;D:\tools\tomcat1&quot;</span><br><span class="line">set CATALINA_HOME&#x3D;&quot;D:\tools\tomcat1&quot;</span><br><span class="line"># JDK所在路径，如果环境变量已经配置，则可忽略，前提是你所有tomcat要共用一个jdk。另外如果设置，此处路径不能有空格</span><br><span class="line">SET JAVA_HOME&#x3D;&quot;D:\Java\jdk1.7.0_45&quot;</span><br></pre></td></tr></table></figure>
-如图：<br><img src="https://static.oschina.net/uploads/space/2017/0329/170630_Ttmb_3203872.png" alt="image"><br><img src="https://static.oschina.net/uploads/space/2017/0329/171827_v9qA_3203872.png" alt="image"><br>启动tomcat<br>平常直接双击startup.bat即可，但是为了查看配置信息，可以在cmd中启动，如下图：<br><img src="https://static.oschina.net/uploads/space/2017/0329/171214_rx4B_3203872.png" alt="image"><br>访问tomcat<br>在浏览器地址栏输入：<a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a> 和 <a href="http://localhost:8082" target="_blank" rel="noopener">http://localhost:8082</a><br><img src="https://static.oschina.net/uploads/space/2017/0329/171320_bKZP_3203872.png" alt="image"></li>
+<li>准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：<br>首先去<a href="http://tomcat.apache.org/download-70.cgi" target="_blank" rel="noopener">apache tomcat官网</a>下载一个tomcat解压版。<img src="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png" alt="image"><br>解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，<br><img src="https://static.oschina.net/uploads/space/2017/0328/160419_P4o4_3203872.png" alt="image"><br>然后修改server.xml配置文件，分别进入tomcat/conf/目录，修改server.xml，一共三处。<br><img src="https://static.oschina.net/uploads/space/2017/0328/160549_uR0Y_3203872.png" alt="image"><br>第一处：<br><img src="https://static.oschina.net/uploads/space/2017/0329/094952_RXZx_3203872.png" alt="image"><br>第二处、tomcat访问端口号：<br><img src="https://static.oschina.net/uploads/space/2017/0329/095118_fqsy_3203872.png" alt="image"><br>第三处：<br><img src="https://static.oschina.net/uploads/space/2017/0329/095239_9NmQ_3203872.png" alt="image"><br>之后修改bin下的启动文件<br>分别进入tomcat/bin目录，修改 startup.bat<br>在文件第一行添加如下配置（添加时删除#注释，在startup.bat文件中rem代表注释）：在文件第一行添加如下配置（添加时删除#注释，在startup.bat文件中rem代表注释）：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># tomcat名称</span><br><span class="line">set TITLE=&quot;tomcat1&quot;</span><br><span class="line"># tomcat启动路径</span><br><span class="line">set CATALINA_BASE=&quot;D:\tools\tomcat1&quot;</span><br><span class="line">set CATALINA_HOME=&quot;D:\tools\tomcat1&quot;</span><br><span class="line"># JDK所在路径，如果环境变量已经配置，则可忽略，前提是你所有tomcat要共用一个jdk。另外如果设置，此处路径不能有空格</span><br><span class="line">SET JAVA_HOME=&quot;D:\Java\jdk1.7.0_45&quot;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>如图：<br><img src="https://static.oschina.net/uploads/space/2017/0329/170630_Ttmb_3203872.png" alt="image"><br><img src="https://static.oschina.net/uploads/space/2017/0329/171827_v9qA_3203872.png" alt="image"><br>启动tomcat<br>平常直接双击startup.bat即可，但是为了查看配置信息，可以在cmd中启动，如下图：<br><img src="https://static.oschina.net/uploads/space/2017/0329/171214_rx4B_3203872.png" alt="image"><br>访问tomcat<br>在浏览器地址栏输入：<a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a> 和 <a href="http://localhost:8082" target="_blank" rel="noopener">http://localhost:8082</a><br><img src="https://static.oschina.net/uploads/space/2017/0329/171320_bKZP_3203872.png" alt="image"></p>
+<ol start="2">
 <li><a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">nginx官网</a>下载解压版nginx。</li>
 <li>创建一个简单的web项目。为了直观的区分访问的哪个tomcat，在页面写上标记8081、8082。<img src="https://static.oschina.net/uploads/space/2017/0330/102251_yVyP_3203872.png" alt="image"></li>
 <li>分别部署到对应的tomcat下。如图：<img src="https://static.oschina.net/uploads/space/2017/0330/104335_4Scb_3203872.png" alt="image"><h6 id="2、配置nginx"><a href="#2、配置nginx" class="headerlink" title="2、配置nginx"></a>2、配置nginx</h6>进入nginx-1.10.1\conf路径，修改配置文件nginx.conf。</li>
-<li>配置服务器组，在http{}节点之间添加upstream配置。（注意不要写localhost，不然访问速度会很慢）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream nginxDemo &#123;</span><br><span class="line">    server 127.0.0.1:8081;   #服务器地址1</span><br><span class="line">    server 127.0.0.1:8082;   #服务器地址2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>修改nginx监听的端口号80，改为8080。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       8080;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在location{}中，利用proxy_pass配置反向代理地址；此处“http://”不能少，后面的地址要和第一步upstream定义的名称保持一致。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">        root   html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;nginxDemo; #配置方向代理地址</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-如下图：<br><img src="https://static.oschina.net/uploads/space/2017/0330/113528_YZCP_3203872.png" alt="image"><h6 id="3、启动nginx和tomcat，访问"><a href="#3、启动nginx和tomcat，访问" class="headerlink" title="3、启动nginx和tomcat，访问"></a>3、启动nginx和tomcat，访问</h6>我是Windows系统，所以直接在nginx-1.10.1目录下双击nginx.exe即可。可在任务管理器中查看：<br><img src="https://static.oschina.net/uploads/space/2017/0330/113005_QuQG_3203872.png" alt="image"><br>最后在浏览器输入地址：<a href="http://localhost:8080/nginxDemo/index.jsp，每次访问就会轮流访问tomcat了（如果F5刷新不管用，建议试试鼠标指针放到地址栏，点击Enter键）。" target="_blank" rel="noopener">http://localhost:8080/nginxDemo/index.jsp，每次访问就会轮流访问tomcat了（如果F5刷新不管用，建议试试鼠标指针放到地址栏，点击Enter键）。</a><br><img src="https://static.oschina.net/uploads/space/2017/0330/112827_dFRT_3203872.png" alt="image"><br><img src="https://static.oschina.net/uploads/space/2017/0330/112757_RGPA_3203872.png" alt="image"><br>到这里，一个非常简单的负载均衡就配置完成了。</li>
+<li><p>配置服务器组，在http{}节点之间添加upstream配置。（注意不要写localhost，不然访问速度会很慢）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream nginxDemo &#123;</span><br><span class="line">    server 127.0.0.1:8081;   #服务器地址1</span><br><span class="line">    server 127.0.0.1:8082;   #服务器地址2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改nginx监听的端口号80，改为8080。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       8080;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在location{}中，利用proxy_pass配置反向代理地址；此处“http://”不能少，后面的地址要和第一步upstream定义的名称保持一致。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location / &#123;</span><br><span class="line">        root   html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        proxy_pass http://nginxDemo; #配置方向代理地址</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>如下图：<br><img src="https://static.oschina.net/uploads/space/2017/0330/113528_YZCP_3203872.png" alt="image"></p>
+<h6 id="3、启动nginx和tomcat，访问"><a href="#3、启动nginx和tomcat，访问" class="headerlink" title="3、启动nginx和tomcat，访问"></a>3、启动nginx和tomcat，访问</h6><p>我是Windows系统，所以直接在nginx-1.10.1目录下双击nginx.exe即可。可在任务管理器中查看：<br><img src="https://static.oschina.net/uploads/space/2017/0330/113005_QuQG_3203872.png" alt="image"><br>最后在浏览器输入地址：<a href="http://localhost:8080/nginxDemo/index.jsp，每次访问就会轮流访问tomcat了（如果F5刷新不管用，建议试试鼠标指针放到地址栏，点击Enter键）。" target="_blank" rel="noopener">http://localhost:8080/nginxDemo/index.jsp，每次访问就会轮流访问tomcat了（如果F5刷新不管用，建议试试鼠标指针放到地址栏，点击Enter键）。</a><br><img src="https://static.oschina.net/uploads/space/2017/0330/112827_dFRT_3203872.png" alt="image"><br><img src="https://static.oschina.net/uploads/space/2017/0330/112757_RGPA_3203872.png" alt="image"><br>到这里，一个非常简单的负载均衡就配置完成了。</p>
 
       
     </div>
@@ -588,7 +599,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -714,7 +725,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -731,6 +742,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -894,7 +910,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

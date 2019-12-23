@@ -84,18 +84,19 @@
 
 
 <meta name="description" content="DNS介绍DNS 为Domain Name System（域名系统）的缩写，它是一种将ip地址转换成对应的主机名或将主机名转换成与之相对应ip地址的一种服务机制。  其中通过域名解析出ip地址的叫做正向解析，通过ip地址解析出域名的叫做反向解析。 DNS使用TCP和UDP, 端口号都是53, 但它主要使用UDP，服务器之间备份使用TCP。  全世界只有13台“根”服务器，1个主根服务器放在美国，其">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS服务及安装配置">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/03/27/17032701/index.html">
 <meta property="og:site_name" content="DInG_BloG">
 <meta property="og:description" content="DNS介绍DNS 为Domain Name System（域名系统）的缩写，它是一种将ip地址转换成对应的主机名或将主机名转换成与之相对应ip地址的一种服务机制。  其中通过域名解析出ip地址的叫做正向解析，通过ip地址解析出域名的叫做反向解析。 DNS使用TCP和UDP, 端口号都是53, 但它主要使用UDP，服务器之间备份使用TCP。  全世界只有13台“根”服务器，1个主根服务器放在美国，其">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://i.imgur.com/HRqBRw9.jpg">
 <meta property="og:image" content="http://i.imgur.com/8zme6Rz.jpg">
-<meta property="article:published_time" content="2017-03-26T18:09:44.000Z">
-<meta property="article:modified_time" content="2019-12-23T14:16:21.860Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="linux">
+<meta property="og:updated_time" content="2019-12-23T14:16:21.860Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DNS服务及安装配置">
+<meta name="twitter:description" content="DNS介绍DNS 为Domain Name System（域名系统）的缩写，它是一种将ip地址转换成对应的主机名或将主机名转换成与之相对应ip地址的一种服务机制。  其中通过域名解析出ip地址的叫做正向解析，通过ip地址解析出域名的叫做反向解析。 DNS使用TCP和UDP, 端口号都是53, 但它主要使用UDP，服务器之间备份使用TCP。  全世界只有13台“根”服务器，1个主根服务器放在美国，其">
 <meta name="twitter:image" content="http://i.imgur.com/HRqBRw9.jpg">
 
 
@@ -142,7 +143,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -188,7 +189,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -198,7 +199,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -208,7 +209,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -218,7 +219,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -228,7 +229,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -238,7 +239,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -403,7 +404,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  7
                 </span>
               
             </div>
@@ -439,41 +440,27 @@
 </ol>
 <h4 id="DNS安装配置"><a href="#DNS安装配置" class="headerlink" title="DNS安装配置"></a>DNS安装配置</h4><p>我们使用bind来搭建DNS服务首先：</p>
 <h5 id="1-安装bind"><a href="#1-安装bind" class="headerlink" title="1. 安装bind"></a>1. 安装bind</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y bind bind-utils</span><br></pre></td></tr></table></figure>
-<p>清空默认配置文件，自定义配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cp &#x2F;etc&#x2F;named.conf &#x2F;etc&#x2F;named.conf.bak  </span><br><span class="line">&gt;&#x2F;etc&#x2F;named.conf</span><br><span class="line">vim &#x2F;etc&#x2F;named.conf              #写入如下配置</span><br><span class="line"></span><br><span class="line">options &#123;</span><br><span class="line">    directory &quot;&#x2F;var&#x2F;named&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;.&quot; IN  &#123;</span><br><span class="line">    type hint;</span><br><span class="line">    file &quot;named.ca&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;localhost&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;localhost.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;0.0.127.in-addr.arpa&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;named.local&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>清空默认配置文件，自定义配置。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/named.conf /etc/named.conf.bak  </span><br><span class="line">&gt;/etc/named.conf</span><br><span class="line">vim /etc/named.conf              #写入如下配置</span><br><span class="line"></span><br><span class="line">options &#123;</span><br><span class="line">    directory &quot;/var/named&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;.&quot; IN  &#123;</span><br><span class="line">    type hint;</span><br><span class="line">    file &quot;named.ca&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;localhost&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;localhost.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line">zone &quot;0.0.127.in-addr.arpa&quot; IN &#123;</span><br><span class="line">    type master;</span><br><span class="line">    file &quot;named.local&quot;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>保存配置，然后修改其属性，定义本地根域配置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown named &#x2F;etc&#x2F;named.conf</span><br><span class="line">cd &#x2F;var&#x2F;named&#x2F;</span><br><span class="line">dig -t NS . &gt; named.ca</span><br></pre></td></tr></table></figure>
-<h5 id="2-增加一个域名（zone）"><a href="#2-增加一个域名（zone）" class="headerlink" title="2. 增加一个域名（zone）"></a>2. 增加一个域名（zone）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;named.conf </span><br><span class="line">&#x2F;&#x2F; 增加:</span><br><span class="line">zone &quot;123.com&quot; IN &#123;</span><br><span class="line">        type master;</span><br><span class="line">        file &quot;123.com.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;189.168.192.in-addr.arpa&quot; IN &#123;</span><br><span class="line">        type master;</span><br><span class="line">        file &quot;189.168.192.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 修改： </span><br><span class="line">listen-on port 53 &#123; 127.0.0.1;192.168.189.131; &#125;;</span><br></pre></td></tr></table></figure>
-<p>编辑zone文件: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;var&#x2F;named&#x2F;123.com.zone</span><br><span class="line">&#x2F;&#x2F;增加下列配置：</span><br><span class="line"> </span><br><span class="line">$TTL 1D</span><br><span class="line">@       IN SOA  @ admin.123.com. (</span><br><span class="line">                                        2017032602       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">       IN  NS      ns.123.com.</span><br><span class="line">       IN  MX  5   mail.123.com.</span><br><span class="line">mail   IN  A       192.168.189.133</span><br><span class="line">ns     IN  A       192.168.189.131</span><br><span class="line">www    IN  A       11.11.11.11</span><br><span class="line">bbs    IN  CNAME    www</span><br></pre></td></tr></table></figure>
-<p>编辑反解析文件: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;var&#x2F;named&#x2F;189.168.192.zone</span><br><span class="line">&#x2F;&#x2F;增加</span><br><span class="line">$TTL 1D</span><br><span class="line">@       IN SOA  @ admin.123.com. (</span><br><span class="line">                                        20170326       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">       IN  NS      ns.123.com.</span><br><span class="line">131    IN  PTR     ns.123.com.</span><br><span class="line">133    IN  PTR     mail.123.com.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">chown named /etc/named.conf</span><br><span class="line">cd /var/named/</span><br><span class="line">dig -t NS . &gt; named.ca</span><br></pre></td></tr></table></figure>
+<h5 id="2-增加一个域名（zone）"><a href="#2-增加一个域名（zone）" class="headerlink" title="2. 增加一个域名（zone）"></a>2. 增加一个域名（zone）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/named.conf </span><br><span class="line">// 增加:</span><br><span class="line">zone &quot;123.com&quot; IN &#123;</span><br><span class="line">        type master;</span><br><span class="line">        file &quot;123.com.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;189.168.192.in-addr.arpa&quot; IN &#123;</span><br><span class="line">        type master;</span><br><span class="line">        file &quot;189.168.192.zone&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 修改： </span><br><span class="line">listen-on port 53 &#123; 127.0.0.1;192.168.189.131; &#125;;</span><br></pre></td></tr></table></figure>
+<p>编辑zone文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim /var/named/123.com.zone</span><br><span class="line">//增加下列配置：</span><br><span class="line"> </span><br><span class="line">$TTL 1D</span><br><span class="line">@       IN SOA  @ admin.123.com. (</span><br><span class="line">                                        2017032602       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">       IN  NS      ns.123.com.</span><br><span class="line">       IN  MX  5   mail.123.com.</span><br><span class="line">mail   IN  A       192.168.189.133</span><br><span class="line">ns     IN  A       192.168.189.131</span><br><span class="line">www    IN  A       11.11.11.11</span><br><span class="line">bbs    IN  CNAME    www</span><br></pre></td></tr></table></figure></p>
+<p>编辑反解析文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim /var/named/189.168.192.zone</span><br><span class="line">//增加</span><br><span class="line">$TTL 1D</span><br><span class="line">@       IN SOA  @ admin.123.com. (</span><br><span class="line">                                        20170326       ; serial</span><br><span class="line">                                        1D      ; refresh</span><br><span class="line">                                        1H      ; retry</span><br><span class="line">                                        1W      ; expire</span><br><span class="line">                                        3H )    ; minimum</span><br><span class="line">       IN  NS      ns.123.com.</span><br><span class="line">131    IN  PTR     ns.123.com.</span><br><span class="line">133    IN  PTR     mail.123.com.</span><br></pre></td></tr></table></figure></p>
 <p>重启named服务，测试 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;named restart                                 </span><br><span class="line">停止 named：                                               [确定]</span><br><span class="line">启动 named：                                               [确定]</span><br><span class="line">dig @192.168.189.131 www.123.com  #检测正解析</span><br><span class="line">dig @192.168.189.131 -x 192.168.189.131 #检测反解析</span><br></pre></td></tr></table></figure>
-<h5 id="3-配置DNS转发"><a href="#3-配置DNS转发" class="headerlink" title="3. 配置DNS转发"></a>3. 配置DNS转发</h5><p>我们配置的DNS是只能解析我们定义的zone的，我们没有定义的是不能解析的。<br>配置DNS转发就可以解析其他互联网上的域名了，前提是这个域名在互联网中的确在使用，也就是说这个域名已经被某个DNS服务器解析了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim  &#x2F;etc&#x2F;named.conf </span><br><span class="line">&#x2F;&#x2F;在options&#123;&#125; 里面增加</span><br><span class="line">forward first;  </span><br><span class="line">forwarders &#123; 114.114.114.114; &#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/named restart                                 </span><br><span class="line">停止 named：                                               [确定]</span><br><span class="line">启动 named：                                               [确定]</span><br><span class="line">dig @192.168.189.131 www.123.com  #检测正解析</span><br><span class="line">dig @192.168.189.131 -x 192.168.189.131 #检测反解析</span><br></pre></td></tr></table></figure>
+<h5 id="3-配置DNS转发"><a href="#3-配置DNS转发" class="headerlink" title="3. 配置DNS转发"></a>3. 配置DNS转发</h5><p>我们配置的DNS是只能解析我们定义的zone的，我们没有定义的是不能解析的。<br>配置DNS转发就可以解析其他互联网上的域名了，前提是这个域名在互联网中的确在使用，也就是说这个域名已经被某个DNS服务器解析了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim  /etc/named.conf </span><br><span class="line">//在options&#123;&#125; 里面增加</span><br><span class="line">forward first;  </span><br><span class="line">forwarders &#123; 114.114.114.114; &#125;;</span><br></pre></td></tr></table></figure></p>
 <p>这两行就是用来配置转发的，该DNS服务器不能解析的域名会转发到114.114.114.114这个DNS服务器上去解析。</p>
-<h5 id="4-配置主从"><a href="#4-配置主从" class="headerlink" title="4. 配置主从"></a>4. 配置主从</h5><p>在从服务器上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y bind bind-utils</span><br></pre></td></tr></table></figure>
+<h5 id="4-配置主从"><a href="#4-配置主从" class="headerlink" title="4. 配置主从"></a>4. 配置主从</h5><p>在从服务器上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y bind bind-utils</span><br></pre></td></tr></table></figure></p>
 <p>修改一下从的/etc/named.conf </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">&#x2F;&#x2F;      listen-on port 53 &#123; 127.0.0.1; &#125;; </span><br><span class="line">&#x2F;&#x2F;      listen-on-v6 port 53 &#123; ::1; &#125;;</span><br><span class="line">&#x2F;&#x2F;      注释掉后表明监听任何端口</span><br><span class="line">        directory       &quot;&#x2F;var&#x2F;named&quot;;</span><br><span class="line">        dump-file       &quot;&#x2F;var&#x2F;named&#x2F;data&#x2F;cache_dump.db&quot;;</span><br><span class="line">        statistics-file &quot;&#x2F;var&#x2F;named&#x2F;data&#x2F;named_stats.txt&quot;;</span><br><span class="line">        memstatistics-file &quot;&#x2F;var&#x2F;named&#x2F;data&#x2F;named_mem_stats.txt&quot;;</span><br><span class="line">        allow-query     &#123; localhost; &#125;;</span><br><span class="line">        recursion yes;</span><br><span class="line"></span><br><span class="line">        dnssec-enable yes;</span><br><span class="line">        dnssec-validation yes;</span><br><span class="line"></span><br><span class="line">        &#x2F;* Path to ISC DLV key *&#x2F;</span><br><span class="line">        bindkeys-file &quot;&#x2F;etc&#x2F;named.iscdlv.key&quot;;</span><br><span class="line"></span><br><span class="line">        managed-keys-directory &quot;&#x2F;var&#x2F;named&#x2F;dynamic&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">        channel default_debug &#123;</span><br><span class="line">                file &quot;data&#x2F;named.run&quot;;</span><br><span class="line">                severity dynamic;</span><br><span class="line">        &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;.&quot; IN &#123;</span><br><span class="line">        type hint;</span><br><span class="line">        file &quot;named.ca&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">include &quot;&#x2F;etc&#x2F;named.rfc1912.zones&quot;;</span><br><span class="line">include &quot;&#x2F;etc&#x2F;named.root.key&quot;;</span><br><span class="line"></span><br><span class="line">zone &quot;123.com&quot; IN &#123;</span><br><span class="line">        type slave ;</span><br><span class="line">        file &quot;slaves&#x2F;123.com.zone&quot;;</span><br><span class="line">        masters &#123; 192.168.189.131; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;189.168.192.in-addr.arpa&quot; IN &#123;</span><br><span class="line">        type slave;</span><br><span class="line">        file &quot;slaves&#x2F;189.168.192.zone&quot;;</span><br><span class="line">        masters &#123; 192.168.189.131; &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>从上生成rndc.key: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rndc-confgen -r &#x2F;dev&#x2F;urandom -a </span><br><span class="line">chown named:named &#x2F;etc&#x2F;rndc.key</span><br></pre></td></tr></table></figure>
-
-<p>从上启动named: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;named start</span><br></pre></td></tr></table></figure>
-
-<p>启动成功后会在 /var/named/下生成一个slaves目录，这个目录下会有192.168.zone, abc.com.zone这两个文件，内容是和主上的一样的<br>在从上测试：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dig @192.168.189.133 www.123.com  #检测正解析</span><br><span class="line">dig @192.168.189.132 -x 192.168.189.131 #检测反解析</span><br></pre></td></tr></table></figure>
-<h5 id="5-测试主从同步"><a href="#5-测试主从同步" class="headerlink" title="5. 测试主从同步"></a>5. 测试主从同步</h5><p>在主dns上更改文件 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;var&#x2F;named&#x2F;123.com.zone </span><br><span class="line">&#x2F;&#x2F; 在最后增加一行：</span><br><span class="line"></span><br><span class="line">graped IN  A       111.111.111.111</span><br></pre></td></tr></table></figure>
-<p>另外需要修改一下第三行的那个数字串，这个是用来做标记的，只有这个数字变化了，才可以让从自动跟着变，数字只能是变大，不能减小，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2016081601 -&gt; 2016081602</span><br></pre></td></tr></table></figure>
-<p>重启主namd服务: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;named restart</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">options &#123;</span><br><span class="line">//      listen-on port 53 &#123; 127.0.0.1; &#125;; </span><br><span class="line">//      listen-on-v6 port 53 &#123; ::1; &#125;;</span><br><span class="line">//      注释掉后表明监听任何端口</span><br><span class="line">        directory       &quot;/var/named&quot;;</span><br><span class="line">        dump-file       &quot;/var/named/data/cache_dump.db&quot;;</span><br><span class="line">        statistics-file &quot;/var/named/data/named_stats.txt&quot;;</span><br><span class="line">        memstatistics-file &quot;/var/named/data/named_mem_stats.txt&quot;;</span><br><span class="line">        allow-query     &#123; localhost; &#125;;</span><br><span class="line">        recursion yes;</span><br><span class="line"></span><br><span class="line">        dnssec-enable yes;</span><br><span class="line">        dnssec-validation yes;</span><br><span class="line"></span><br><span class="line">        /* Path to ISC DLV key */</span><br><span class="line">        bindkeys-file &quot;/etc/named.iscdlv.key&quot;;</span><br><span class="line"></span><br><span class="line">        managed-keys-directory &quot;/var/named/dynamic&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">logging &#123;</span><br><span class="line">        channel default_debug &#123;</span><br><span class="line">                file &quot;data/named.run&quot;;</span><br><span class="line">                severity dynamic;</span><br><span class="line">        &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;.&quot; IN &#123;</span><br><span class="line">        type hint;</span><br><span class="line">        file &quot;named.ca&quot;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">include &quot;/etc/named.rfc1912.zones&quot;;</span><br><span class="line">include &quot;/etc/named.root.key&quot;;</span><br><span class="line"></span><br><span class="line">zone &quot;123.com&quot; IN &#123;</span><br><span class="line">        type slave ;</span><br><span class="line">        file &quot;slaves/123.com.zone&quot;;</span><br><span class="line">        masters &#123; 192.168.189.131; &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">zone &quot;189.168.192.in-addr.arpa&quot; IN &#123;</span><br><span class="line">        type slave;</span><br><span class="line">        file &quot;slaves/189.168.192.zone&quot;;</span><br><span class="line">        masters &#123; 192.168.189.131; &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>从上生成rndc.key:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rndc-confgen -r /dev/urandom -a </span><br><span class="line">chown named:named /etc/rndc.key</span><br></pre></td></tr></table></figure></p>
+<p>从上启动named:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/named start</span><br></pre></td></tr></table></figure></p>
+<p>启动成功后会在 /var/named/下生成一个slaves目录，这个目录下会有192.168.zone, abc.com.zone这两个文件，内容是和主上的一样的<br>在从上测试：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dig @192.168.189.133 www.123.com  #检测正解析</span><br><span class="line">dig @192.168.189.132 -x 192.168.189.131 #检测反解析</span><br></pre></td></tr></table></figure></p>
+<h5 id="5-测试主从同步"><a href="#5-测试主从同步" class="headerlink" title="5. 测试主从同步"></a>5. 测试主从同步</h5><p>在主dns上更改文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /var/named/123.com.zone </span><br><span class="line">// 在最后增加一行：</span><br><span class="line"></span><br><span class="line">graped IN  A       111.111.111.111</span><br></pre></td></tr></table></figure></p>
+<p>另外需要修改一下第三行的那个数字串，这个是用来做标记的，只有这个数字变化了，才可以让从自动跟着变，数字只能是变大，不能减小，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2016081601 -&gt; 2016081602</span><br></pre></td></tr></table></figure></p>
+<p>重启主namd服务:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/named restart</span><br></pre></td></tr></table></figure></p>
 <p>经测试我们发现一个问题，就是从经常会同步特别慢，这是很要命的。所以需要我们做一个特殊操作，在主上的/etc/named.conf中，123.com的zone中增加两行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">notify yes;</span><br><span class="line">also-notify &#123; 192.168.0.12; &#125;;</span><br></pre></td></tr></table></figure>
-
 
       
     </div>
@@ -613,7 +600,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -739,7 +726,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -756,6 +743,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -919,7 +911,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

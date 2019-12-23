@@ -84,16 +84,17 @@
 
 
 <meta name="description" content="以前我们在windows上共享文件的话，只需右击要共享的文件夹然后选择共享相关的选项设置即可。然而如何实现windows和linux的文件共享呢？这就涉及到了samba服务了，这个软件配置起来也不难，使用也非常简单。  samba配置文件smb.conf安装系统的时候大多会默认安装samba，如果没有安装，在CentOS上只需要运行这个命令安装即可:  1yum install -y samba">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="samba 部署和优化">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/03/21/17032102/index.html">
 <meta property="og:site_name" content="DInG_BloG">
 <meta property="og:description" content="以前我们在windows上共享文件的话，只需右击要共享的文件夹然后选择共享相关的选项设置即可。然而如何实现windows和linux的文件共享呢？这就涉及到了samba服务了，这个软件配置起来也不难，使用也非常简单。  samba配置文件smb.conf安装系统的时候大多会默认安装samba，如果没有安装，在CentOS上只需要运行这个命令安装即可:  1yum install -y samba">
-<meta property="article:published_time" content="2017-03-21T08:35:44.000Z">
-<meta property="article:modified_time" content="2017-03-21T08:38:45.285Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="linux">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-21T08:38:45.285Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="samba 部署和优化">
+<meta name="twitter:description" content="以前我们在windows上共享文件的话，只需右击要共享的文件夹然后选择共享相关的选项设置即可。然而如何实现windows和linux的文件共享呢？这就涉及到了samba服务了，这个软件配置起来也不难，使用也非常简单。  samba配置文件smb.conf安装系统的时候大多会默认安装samba，如果没有安装，在CentOS上只需要运行这个命令安装即可:  1yum install -y samba">
 
 
 
@@ -139,7 +140,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -185,7 +186,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -195,7 +196,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -205,7 +206,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -215,7 +216,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -225,7 +226,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -235,7 +236,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -378,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  6
                 </span>
               
             </div>
@@ -405,19 +406,17 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y samba samba-client</span><br></pre></td></tr></table></figure>
 <p>Samba的配置文件为/etc/samba/smb.conf，通过修改这个配置文件来完成我们的各种需求。打开这个配置文件，你会发现很多内容都用#或者;注视掉了。先看一下未被注释掉的部分:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">        workgroup &#x3D; MYGROUP</span><br><span class="line">        server string &#x3D; Samba Server Version %v</span><br><span class="line">        security &#x3D; user</span><br><span class="line">        passdb backend &#x3D; tdbsam</span><br><span class="line">        load printers &#x3D; yes</span><br><span class="line">        cups options &#x3D; raw</span><br><span class="line">[homes]</span><br><span class="line">        comment &#x3D; Home Directories</span><br><span class="line">        browseable &#x3D; no</span><br><span class="line">        writable &#x3D; yes</span><br><span class="line">[printers]</span><br><span class="line">        comment &#x3D; All Printers</span><br><span class="line">        path &#x3D; &#x2F;var&#x2F;spool&#x2F;samba</span><br><span class="line">        browseable &#x3D; no</span><br><span class="line">        guest ok &#x3D; no</span><br><span class="line">        writable &#x3D; no</span><br><span class="line">        printable &#x3D; yes</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">        workgroup = MYGROUP</span><br><span class="line">        server string = Samba Server Version %v</span><br><span class="line">        security = user</span><br><span class="line">        passdb backend = tdbsam</span><br><span class="line">        load printers = yes</span><br><span class="line">        cups options = raw</span><br><span class="line">[homes]</span><br><span class="line">        comment = Home Directories</span><br><span class="line">        browseable = no</span><br><span class="line">        writable = yes</span><br><span class="line">[printers]</span><br><span class="line">        comment = All Printers</span><br><span class="line">        path = /var/spool/samba</span><br><span class="line">        browseable = no</span><br><span class="line">        guest ok = no</span><br><span class="line">        writable = no</span><br><span class="line">        printable = yes</span><br></pre></td></tr></table></figure>
 <p>主要有以上三个部分：[global], [homes], [printers]</p>
 <h6 id="homes-该部分内容共享用户自己的家目录，也就是说，当用户登录到samba服务器上时实际上是进入到了该用户的家目录，用户登陆后，共享名不是homes而是用户自己的标识符，对于单纯的文件共享的环境来说，这部分可以注视掉。"><a href="#homes-该部分内容共享用户自己的家目录，也就是说，当用户登录到samba服务器上时实际上是进入到了该用户的家目录，用户登陆后，共享名不是homes而是用户自己的标识符，对于单纯的文件共享的环境来说，这部分可以注视掉。" class="headerlink" title="[homes] 该部分内容共享用户自己的家目录，也就是说，当用户登录到samba服务器上时实际上是进入到了该用户的家目录，用户登陆后，共享名不是homes而是用户自己的标识符，对于单纯的文件共享的环境来说，这部分可以注视掉。"></a>[homes] 该部分内容共享用户自己的家目录，也就是说，当用户登录到samba服务器上时实际上是进入到了该用户的家目录，用户登陆后，共享名不是homes而是用户自己的标识符，对于单纯的文件共享的环境来说，这部分可以注视掉。</h6><h6 id="printers-该部分内容设置打印机共享。"><a href="#printers-该部分内容设置打印机共享。" class="headerlink" title="[printers] 该部分内容设置打印机共享。"></a>[printers] 该部分内容设置打印机共享。</h6><h6 id="global-定义全局的配置，workgroup用来定义工作组，相信如果你安装过windows的系统，你会对这个workgroup不陌生。一般情况下，需要我们把这里的MYGROUP改成WORKGROUP（windows默认的工作组名字）。"><a href="#global-定义全局的配置，workgroup用来定义工作组，相信如果你安装过windows的系统，你会对这个workgroup不陌生。一般情况下，需要我们把这里的MYGROUP改成WORKGROUP（windows默认的工作组名字）。" class="headerlink" title="[global] 定义全局的配置，workgroup用来定义工作组，相信如果你安装过windows的系统，你会对这个workgroup不陌生。一般情况下，需要我们把这里的MYGROUP改成WORKGROUP（windows默认的工作组名字）。"></a>[global] 定义全局的配置，workgroup用来定义工作组，相信如果你安装过windows的系统，你会对这个workgroup不陌生。一般情况下，需要我们把这里的MYGROUP改成WORKGROUP（windows默认的工作组名字）。</h6><ul>
-<li><p>security = user #这里指定samba的安全等级。关于安全等级有四种：</p>
-<ul>
+<li>security = user #这里指定samba的安全等级。关于安全等级有四种：<ul>
 <li>share：用户不需要账户及密码即可登录samba服务器</li>
 <li>user：由提供服务的samba服务器负责检查账户及密码（默认）</li>
 <li>server：检查账户及密码的工作由另一台windows或samba服务器负责</li>
 <li>domain：指定windows域控制服务器来验证用户的账户及密码。</li>
 </ul>
 </li>
-<li><p>passdb backend = tdbsam # passdb backend（用户后台），samba有三种用户后台：smbpasswd, tdbsam和ldapsam.</p>
-<ul>
+<li>passdb backend = tdbsam # passdb backend（用户后台），samba有三种用户后台：smbpasswd, tdbsam和ldapsam.<ul>
 <li>smbpasswd：该方式是使用smb工具smbpasswd给系统用户（真实用户或者虚拟用户）设置一个Samba密码，客户端就用此密码访问Samba资源。smbpasswd在/etc/samba中，有时需要手工创建该文件。</li>
 <li>tdbsam：使用数据库文件创建用户数据库。数据库文件叫passdb.tdb，在/etc/samba中。passdb.tdb用户数据库可使用 smbpasswd -a创建Samba用户，要创建的Samba用户必须先是系统用户。也可使用pdbedit创建Samba账户。pdbedit参数很多，列出几个主要的：<ul>
 <li>pdbedit -a username：新建Samba账户。</li>
@@ -435,12 +434,9 @@
 </li>
 <li><p>netbios name = MYSERVER # 设置出现在网上邻居中的主机名</p>
 </li>
-<li><p>hosts allow = 127. 192.168.12. 192.168.13. # 用来设置允许的主机，如果在前面加 ”;” 则表示允许所有主机</p>
-</li>
-<li><p>log file = /var/log/samba/%m.log #定义samba的日志，这里的%m是上面的netbios name</p>
-</li>
-<li><p>max log size = 50 # 指定日志的最大容量，单位是K</p>
-</li>
+<li>hosts allow = 127. 192.168.12. 192.168.13. # 用来设置允许的主机，如果在前面加 ”;” 则表示允许所有主机</li>
+<li>log file = /var/log/samba/%m.log #定义samba的日志，这里的%m是上面的netbios name</li>
+<li>max log size = 50 # 指定日志的最大容量，单位是K</li>
 </ul>
 <ol start="2">
 <li><h4 id="Samba实践"><a href="#Samba实践" class="headerlink" title="Samba实践"></a>Samba实践</h4>i. 共享一个目录，任何人都可以访问，即不用输入密码即可访问，要求只读.</li>
@@ -450,34 +446,30 @@
 <li>MYGROUP改成:WORKGROUP</li>
 <li>security = user改成:security = share<br>然后在配置文件最后加入：</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[keso]</span><br><span class="line">        comment &#x3D; share all</span><br><span class="line">        path &#x3D; &#x2F;tmp&#x2F;samba</span><br><span class="line">        browseable &#x3D; yes</span><br><span class="line">        public &#x3D; yes</span><br><span class="line">        writable &#x3D; no</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[keso]</span><br><span class="line">        comment = share all</span><br><span class="line">        path = /tmp/samba</span><br><span class="line">        browseable = yes</span><br><span class="line">        public = yes</span><br><span class="line">        writable = no</span><br></pre></td></tr></table></figure>
 <p>创建测试目录、文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;tmp&#x2F;samba</span><br><span class="line">chmod 777 &#x2F;tmp&#x2F;samba</span><br><span class="line">touch &#x2F;tmp&#x2F;samba&#x2F;sharefiles</span><br><span class="line">echo &quot;111111&quot; &gt; &#x2F;tmp&#x2F;samba&#x2F;sharefiles</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /tmp/samba</span><br><span class="line">chmod 777 /tmp/samba</span><br><span class="line">touch /tmp/samba/sharefiles</span><br><span class="line">echo &quot;111111&quot; &gt; /tmp/samba/sharefiles</span><br></pre></td></tr></table></figure>
 <p>启动samba服务:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;smb start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/smb start</span><br></pre></td></tr></table></figure>
 <p>测试：首先测试你配置的smb.conf是否正确，用下面的命令:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">testparm</span><br></pre></td></tr></table></figure>
 <p>你应该会看到一个警告:WARNING: The security=share option is deprecated, 不过影响不大，无需管它。如果没有错误，则在你的windows机器上的浏览器中输入:<br>file://IP/share</p>
 <p>看是否能访问到sharefiles<br>ii. 共享一个目录，使用用户名和密码登录后才可以访问，要求可以读写.<br>打开samba的配置文件/etc/samba/smb.conf<br>[global] 部分内容如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">        workgroup &#x3D; WORKGROUP</span><br><span class="line">        server string &#x3D; Samba Server Version %v</span><br><span class="line">        security &#x3D; user</span><br><span class="line">        passdb backend &#x3D; tdbsam</span><br><span class="line">        load printers &#x3D; yes</span><br><span class="line">        cups options &#x3D; raw</span><br></pre></td></tr></table></figure>
-<p>还需要加入以下内容:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[myshare]</span><br><span class="line">        comment &#x3D; share for users</span><br><span class="line">        path &#x3D; &#x2F;samba</span><br><span class="line">        browseable &#x3D; yes</span><br><span class="line">        writable &#x3D; yes</span><br><span class="line">        public &#x3D; no</span><br></pre></td></tr></table></figure>
-<p>保存配置文件，创建目录:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir &#x2F;samba</span><br><span class="line">chmod 777 &#x2F;samba</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[global]</span><br><span class="line">        workgroup = WORKGROUP</span><br><span class="line">        server string = Samba Server Version %v</span><br><span class="line">        security = user</span><br><span class="line">        passdb backend = tdbsam</span><br><span class="line">        load printers = yes</span><br><span class="line">        cups options = raw</span><br></pre></td></tr></table></figure>
+<p>还需要加入以下内容:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[myshare]</span><br><span class="line">        comment = share for users</span><br><span class="line">        path = /samba</span><br><span class="line">        browseable = yes</span><br><span class="line">        writable = yes</span><br><span class="line">        public = no</span><br></pre></td></tr></table></figure></p>
+<p>保存配置文件，创建目录:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /samba</span><br><span class="line">chmod 777 /samba</span><br></pre></td></tr></table></figure></p>
 <p>然后添加用户。因为在[globa]中 “passdb backend = tdbsam”, 所以要使用 pdbedit 来增加用户，注意添加的用户必须在系统中存在，所以需要先创建系统账号:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd user1</span><br><span class="line">useradd user2</span><br></pre></td></tr></table></figure>
 <p>然后添加user1为samba账号:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pdbedit -a user1</span><br></pre></td></tr></table></figure>
-<p>重启samba服务:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service smb restart</span><br></pre></td></tr></table></figure>
+<p>重启samba服务:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service smb restart</span><br></pre></td></tr></table></figure></p>
 <p>测试,打开IE浏览器输入:file://IP/myshare/,然后输入用户名和密码</p>
 <ol start="3">
 <li><h4 id="使用linux访问samba服务器"><a href="#使用linux访问samba服务器" class="headerlink" title="使用linux访问samba服务器"></a>使用linux访问samba服务器</h4></li>
 </ol>
 <p>Samba服务在linux下同样可以访问。前提是你的linux安装了samba-client软件包。安装完后就可以使用smbclient命令了。具体语法为:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smbclient &#x2F;&#x2F;IP&#x2F;共享名  -U 用户名</span><br></pre></td></tr></table></figure>
-<p>出现如上所示的界面。可以打一个 ”?” 列出所有可以使用的命令。常用的有cd, ls, rm, pwd, tar, mkdir, chown, get, put等等，使用 help + 命令可以打印该命令如何使用，其中get是下载，put是上传。<br>另外的方式就是通过mount挂载了，如:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t cifs &#x2F;&#x2F;10.0.4.67&#x2F;myshare &#x2F;mnt -o username&#x3D;user1,password&#x3D;123456</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">smbclient //IP/共享名  -U 用户名</span><br></pre></td></tr></table></figure>
+<p>出现如上所示的界面。可以打一个 ”?” 列出所有可以使用的命令。常用的有cd, ls, rm, pwd, tar, mkdir, chown, get, put等等，使用 help + 命令可以打印该命令如何使用，其中get是下载，put是上传。<br>另外的方式就是通过mount挂载了，如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount -t cifs //10.0.4.67/myshare /mnt -o username=user1,password=123456</span><br></pre></td></tr></table></figure></p>
 <p>格式就是这样，要指定 -t cifs //IP/共享名 本地挂载点 -o后面跟username 和 password 挂载完后就可以像使用本地的目录一样使用共享的目录了，注意共享名后面不能有斜杠。</p>
 
       
@@ -618,7 +610,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -744,7 +736,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -761,6 +753,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -924,7 +921,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

@@ -84,16 +84,17 @@
 
 
 <meta name="description" content="Nginx 的负载均衡集群Nginx的负载均衡和lvs相比，Nginx属于更高级的应用层，不会牵扯到IP和内核的改动，它只是单纯的把用户的请求转发到后面的机器上。这就意味着：后端的RS不需要配置公网IP。 1. 环境说明Nginx分发器（公网IP：192.168.0.161；内网IP：192.168.209.131）RS1：只有内网，IP为：192.168.209.132RS2：只有内网，IP为：">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nginx 的负载均衡集群">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/03/30/17033001/index.html">
 <meta property="og:site_name" content="DInG_BloG">
 <meta property="og:description" content="Nginx 的负载均衡集群Nginx的负载均衡和lvs相比，Nginx属于更高级的应用层，不会牵扯到IP和内核的改动，它只是单纯的把用户的请求转发到后面的机器上。这就意味着：后端的RS不需要配置公网IP。 1. 环境说明Nginx分发器（公网IP：192.168.0.161；内网IP：192.168.209.131）RS1：只有内网，IP为：192.168.209.132RS2：只有内网，IP为：">
-<meta property="article:published_time" content="2017-03-30T12:14:57.000Z">
-<meta property="article:modified_time" content="2017-03-30T12:24:25.295Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="linux">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-30T12:24:25.295Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Nginx 的负载均衡集群">
+<meta name="twitter:description" content="Nginx 的负载均衡集群Nginx的负载均衡和lvs相比，Nginx属于更高级的应用层，不会牵扯到IP和内核的改动，它只是单纯的把用户的请求转发到后面的机器上。这就意味着：后端的RS不需要配置公网IP。 1. 环境说明Nginx分发器（公网IP：192.168.0.161；内网IP：192.168.209.131）RS1：只有内网，IP为：192.168.209.132RS2：只有内网，IP为：">
 
 
 
@@ -139,7 +140,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -185,7 +186,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -195,7 +196,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -205,7 +206,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -215,7 +216,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -225,7 +226,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -235,7 +236,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -400,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  1
                 </span>
               
             </div>
@@ -423,13 +424,11 @@
       
         <h5 id="Nginx-的负载均衡集群"><a href="#Nginx-的负载均衡集群" class="headerlink" title="Nginx 的负载均衡集群"></a>Nginx 的负载均衡集群</h5><p>Nginx的负载均衡和lvs相比，Nginx属于更高级的应用层，不会牵扯到IP和内核的改动，它只是单纯的把用户的请求转发到后面的机器上。这就意味着：后端的RS不需要配置公网IP。</p>
 <h6 id="1-环境说明"><a href="#1-环境说明" class="headerlink" title="1. 环境说明"></a>1. 环境说明</h6><p>Nginx分发器（公网IP：192.168.0.161；内网IP：192.168.209.131）<br>RS1：只有内网，IP为：192.168.209.132<br>RS2：只有内网，IP为：192.168.209.133</p>
-<h6 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h6><p>在nginx分发器上编辑配置文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;usr&#x2F;local&#x2F;nginx&#x2F;conf&#x2F;vhosts&#x2F;lb.conf</span><br><span class="line">#加入以下内容</span><br><span class="line">upstream graped &#123;</span><br><span class="line">		ip_hash;</span><br><span class="line">        server 192.168.209.132:80;</span><br><span class="line">        server 192.168.209.133:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.123.com;</span><br><span class="line">        location &#x2F; &#123;</span><br><span class="line">                proxy_pass      http:&#x2F;&#x2F;graped&#x2F;;</span><br><span class="line">                proxy_set_header Host   $host;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="2-配置"><a href="#2-配置" class="headerlink" title="2. 配置"></a>2. 配置</h6><p>在nginx分发器上编辑配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/local/nginx/conf/vhosts/lb.conf</span><br><span class="line">#加入以下内容</span><br><span class="line">upstream graped &#123;</span><br><span class="line">		ip_hash;</span><br><span class="line">        server 192.168.209.132:80;</span><br><span class="line">        server 192.168.209.133:80;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80;</span><br><span class="line">        server_name www.123.com;</span><br><span class="line">        location / &#123;</span><br><span class="line">                proxy_pass      http://graped/;</span><br><span class="line">                proxy_set_header Host   $host;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure></p>
 <p>说明：</p>
-<p>upstream用来定义后端的RS，可以只写一个。ip_bash 为nginx的一种调度算法，加上这一行后会达到这样的效果：即一个用户的请求会始终被分发到固定的一个RS上。这样的好处是：可以避免吧同一个用户的请求分发到不同的机器上面而导致session丢失的情况。upstream里面，RS后面的IP后面还可以加权重，比如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server 192.168.209.132:80 weight&#x3D;100</span><br></pre></td></tr></table></figure>
+<p>upstream用来定义后端的RS，可以只写一个。ip_bash 为nginx的一种调度算法，加上这一行后会达到这样的效果：即一个用户的请求会始终被分发到固定的一个RS上。这样的好处是：可以避免吧同一个用户的请求分发到不同的机器上面而导致session丢失的情况。upstream里面，RS后面的IP后面还可以加权重，比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">server 192.168.209.132:80 weight=100</span><br></pre></td></tr></table></figure></p>
 <p>还需要注意的是，upstream后面的graped是自定义的一个名字，可以随便写，唯一的要求是要和后面的proxy_pass后面保持一致。</p>
-<p>另外：<br>还可以根据访问的目录来区分后端Web，请参考：nginx代理扩展：<br><a href="http://note.youdao.com/noteshare?id=6123c1559f821ab895eef6bab5174c77&sub=4ECC2219D20C4C0CA2B4266E060AF30D" target="_blank" rel="noopener">根据目录区分后端web</a></p>
+<p>另外：<br>还可以根据访问的目录来区分后端Web，请参考：nginx代理扩展：<br><a href="http://note.youdao.com/noteshare?id=6123c1559f821ab895eef6bab5174c77&amp;sub=4ECC2219D20C4C0CA2B4266E060AF30D" target="_blank" rel="noopener">根据目录区分后端web</a></p>
 
       
     </div>
@@ -569,7 +568,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -695,7 +694,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -712,6 +711,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -875,7 +879,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {

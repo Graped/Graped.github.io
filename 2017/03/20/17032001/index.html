@@ -83,17 +83,18 @@
 
 
 
-<meta name="description" content="服务端配置NFSCentOS上使用NFS服务，需要安装两个包(nfs-utils和rpcbind),不过当使用yum安装nfs-utils 时会把rpcbind一起安装上 1yum install -y nfs-utils rpcbind 修改配置文件，默认该文件为空，现在编辑它:1vim &#x2F;etc&#x2F;exports 写入以下内容： 1&#x2F;mnt 192.168.189.">
+<meta name="description" content="服务端配置NFSCentOS上使用NFS服务，需要安装两个包(nfs-utils和rpcbind),不过当使用yum安装nfs-utils 时会把rpcbind一起安装上 1yum install -y nfs-utils rpcbind 修改配置文件，默认该文件为空，现在编辑它:1vim /etc/exports 写入以下内容： 1/mnt 192.168.189.0/24(rw,sync,al">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NFS部署和优化">
 <meta property="og:url" content="http://www.grapedlinux.cn/2017/03/20/17032001/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="服务端配置NFSCentOS上使用NFS服务，需要安装两个包(nfs-utils和rpcbind),不过当使用yum安装nfs-utils 时会把rpcbind一起安装上 1yum install -y nfs-utils rpcbind 修改配置文件，默认该文件为空，现在编辑它:1vim &#x2F;etc&#x2F;exports 写入以下内容： 1&#x2F;mnt 192.168.189.">
-<meta property="article:published_time" content="2017-03-20T11:28:41.000Z">
-<meta property="article:modified_time" content="2017-03-20T11:29:52.314Z">
-<meta property="article:author" content="Graped">
-<meta property="article:tag" content="linux">
+<meta property="og:description" content="服务端配置NFSCentOS上使用NFS服务，需要安装两个包(nfs-utils和rpcbind),不过当使用yum安装nfs-utils 时会把rpcbind一起安装上 1yum install -y nfs-utils rpcbind 修改配置文件，默认该文件为空，现在编辑它:1vim /etc/exports 写入以下内容： 1/mnt 192.168.189.0/24(rw,sync,al">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-03-20T11:29:52.314Z">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NFS部署和优化">
+<meta name="twitter:description" content="服务端配置NFSCentOS上使用NFS服务，需要安装两个包(nfs-utils和rpcbind),不过当使用yum安装nfs-utils 时会把rpcbind一起安装上 1yum install -y nfs-utils rpcbind 修改配置文件，默认该文件为空，现在编辑它:1vim /etc/exports 写入以下内容： 1/mnt 192.168.189.0/24(rw,sync,al">
 
 
 
@@ -139,7 +140,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+</head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
@@ -185,7 +186,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/%20" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -195,7 +196,7 @@
       
         
         <li class="menu-item menu-item-tags">
-          <a href="/tags/%20" rel="section">
+          <a href="/tags/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
@@ -205,7 +206,7 @@
       
         
         <li class="menu-item menu-item-categories">
-          <a href="/categories/%20" rel="section">
+          <a href="/categories/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
@@ -215,7 +216,7 @@
       
         
         <li class="menu-item menu-item-archives">
-          <a href="/archives/%20" rel="section">
+          <a href="/archives/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
@@ -225,7 +226,7 @@
       
         
         <li class="menu-item menu-item-about">
-          <a href="/about/%20" rel="section">
+          <a href="/about/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
@@ -235,7 +236,7 @@
       
         
         <li class="menu-item menu-item-sitemap">
-          <a href="/atom.xml%20" rel="section">
+          <a href="/atom.xml" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
             
@@ -378,7 +379,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  
+                  3
                 </span>
               
             </div>
@@ -401,9 +402,9 @@
       
         <h4 id="服务端配置NFS"><a href="#服务端配置NFS" class="headerlink" title="服务端配置NFS"></a>服务端配置NFS</h4><p>CentOS上使用NFS服务，需要安装两个包(nfs-utils和rpcbind),不过当使用yum安装nfs-utils 时会把rpcbind一起安装上</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y nfs-utils rpcbind</span><br></pre></td></tr></table></figure>
-<h5 id="修改配置文件，默认该文件为空，现在编辑它"><a href="#修改配置文件，默认该文件为空，现在编辑它" class="headerlink" title="修改配置文件，默认该文件为空，现在编辑它:"></a>修改配置文件，默认该文件为空，现在编辑它:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;exports</span><br></pre></td></tr></table></figure>
+<h5 id="修改配置文件，默认该文件为空，现在编辑它"><a href="#修改配置文件，默认该文件为空，现在编辑它" class="headerlink" title="修改配置文件，默认该文件为空，现在编辑它:"></a>修改配置文件，默认该文件为空，现在编辑它:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/exports</span><br></pre></td></tr></table></figure>
 <p>写入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;mnt 192.168.189.0&#x2F;24(rw,sync,all_squash,anonuid&#x3D;501,anongid&#x3D;501)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/mnt 192.168.189.0/24(rw,sync,all_squash,anonuid=501,anongid=501)</span><br></pre></td></tr></table></figure>
 <p>这个配置文件就这样简单一行。共分为三部分，第一部分就是本地要共享出去的目录，第二部分为允许访问的主机（可以是一个IP也可以是一个IP段）第三部分就是小括号里面的，为一些权限选项。下面简单介绍以下权限选项：</p>
 <ul>
 <li>w ：读写；</li>
@@ -416,11 +417,11 @@
 <li>anonuid/anongid ：要和root_squash 以及all_squash一同使用，用于指定使用NFS的用户限定后的uid和gid，前提是本机的/etc/passwd中存在这个uid和gid。</li>
 </ul>
 <p>我们刚才配置的文件意思为：其中分享的目录为/mnt，信任的主机为：192.168.189.0/24这个网段，权限为读写，同步，限定所有使用者，并且限定的uid和gid都为501。</p>
-<h5 id="编辑好配置文件后，就该启动NFS服务了"><a href="#编辑好配置文件后，就该启动NFS服务了" class="headerlink" title="编辑好配置文件后，就该启动NFS服务了"></a>编辑好配置文件后，就该启动NFS服务了</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;etc&#x2F;init.d&#x2F;rpcbind start</span><br><span class="line">&#x2F;etc&#x2F;init.d&#x2F;nfs start</span><br></pre></td></tr></table></figure>
+<h5 id="编辑好配置文件后，就该启动NFS服务了"><a href="#编辑好配置文件后，就该启动NFS服务了" class="headerlink" title="编辑好配置文件后，就该启动NFS服务了"></a>编辑好配置文件后，就该启动NFS服务了</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/rpcbind start</span><br><span class="line">/etc/init.d/nfs start</span><br></pre></td></tr></table></figure>
 <h4 id="客户端上挂载nfs"><a href="#客户端上挂载nfs" class="headerlink" title="客户端上挂载nfs"></a>客户端上挂载nfs</h4><p>客户端在挂载NFS之前，我们需要先看一看服务端都共享了哪些目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">showmount -e 192.168.189.131         #IP为服务端IP</span><br><span class="line">Export list for 192.168.189.131:</span><br><span class="line">&#x2F;mnt 192.168.189.0&#x2F;24</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">showmount -e 192.168.189.131         #IP为服务端IP</span><br><span class="line">Export list for 192.168.189.131:</span><br><span class="line">/mnt 192.168.189.0/24</span><br></pre></td></tr></table></figure>
 <p>可以看到共享的目录为/mnt 信任的IP为192.168.189.0/24这个网段</p>
-<h5 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mount -t -onolock,nfsver&#x3D;3 192.168.189.131:&#x2F;mnt &#x2F;opt #-o后面跟挂载选项，如果不加nfsver&#x3D;3 则挂载目录下的文件属主和组都是nobody</span><br><span class="line">df -h</span><br><span class="line">Filesystem            Size  Used Avail Use% Mounted on</span><br><span class="line">&#x2F;dev&#x2F;sda3              18G  1.4G   16G   9% &#x2F;</span><br><span class="line">tmpfs                 504M     0  504M   0% &#x2F;dev&#x2F;shm</span><br><span class="line">&#x2F;dev&#x2F;sda1             194M   25M  160M  14% &#x2F;boot</span><br><span class="line">192.168.189.131:&#x2F;mnt   18G  2.8G   14G  17% &#x2F;opt</span><br></pre></td></tr></table></figure>
+<h5 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mount -t -onolock,nfsver=3 192.168.189.131:/mnt /opt #-o后面跟挂载选项，如果不加nfsver=3 则挂载目录下的文件属主和组都是nobody</span><br><span class="line">df -h</span><br><span class="line">Filesystem            Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/sda3              18G  1.4G   16G   9% /</span><br><span class="line">tmpfs                 504M     0  504M   0% /dev/shm</span><br><span class="line">/dev/sda1             194M   25M  160M  14% /boot</span><br><span class="line">192.168.189.131:/mnt   18G  2.8G   14G  17% /opt</span><br></pre></td></tr></table></figure>
 <p>可以看到在多出来一个 /opt分区，它就是NFS的共享目录。</p>
 <h4 id="命令exportfs"><a href="#命令exportfs" class="headerlink" title="命令exportfs"></a>命令exportfs</h4><p>该命令的个选项意义为：</p>
 <ul>
@@ -430,11 +431,9 @@
 <li>-v ：显示共享的目录；</li>
 </ul>
 <p>当改变/etc/exports配置文件后，不用重启nfs服务而直接用exportfs -arv即可。<br>-o还有一个选项是-o nolock 了，即在挂载nfs服务时，不加锁。 启用这个选项后，我们可以把要挂载的nfs目录写到client上的/etc/fstab文件中：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.189.131:&#x2F;tmp&#x2F;            &#x2F;test        nfs       nolock  0 0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.189.131:/tmp/            /test        nfs       nolock  0 0</span><br></pre></td></tr></table></figure>
 <p>挂载时只需要执行 mount -a 即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@Grapedlinux ~]# mount -a</span><br><span class="line">[root@Grapedlinux ~]# df -h</span><br><span class="line">Filesystem             Size  Used Avail Use% Mounted on</span><br><span class="line">&#x2F;dev&#x2F;sda3               18G  1.4G   16G   9% &#x2F;</span><br><span class="line">tmpfs                  504M     0  504M   0% &#x2F;dev&#x2F;shm</span><br><span class="line">&#x2F;dev&#x2F;sda1              194M   25M  160M  14% &#x2F;boot</span><br><span class="line">192.168.189.131:&#x2F;tmp&#x2F;   18G  2.8G   14G  17% &#x2F;test</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@Grapedlinux ~]# mount -a</span><br><span class="line">[root@Grapedlinux ~]# df -h</span><br><span class="line">Filesystem             Size  Used Avail Use% Mounted on</span><br><span class="line">/dev/sda3               18G  1.4G   16G   9% /</span><br><span class="line">tmpfs                  504M     0  504M   0% /dev/shm</span><br><span class="line">/dev/sda1              194M   25M  160M  14% /boot</span><br><span class="line">192.168.189.131:/tmp/   18G  2.8G   14G  17% /test</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -574,7 +573,7 @@
             
               <div class="site-state-item site-state-posts">
               
-                <a href="/archives/%20%7C%7C%20archive">
+                <a href="/archives/">
               
                   <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
@@ -700,7 +699,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count"></span>
+    <span title="Site words total count">50k</span>
   
 </div>
 
@@ -717,6 +716,11 @@
 
 
 
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共50k字</span>
+</div>
 
         
 
@@ -880,7 +884,7 @@
     var isfetched = false;
     var isXml = true;
     // Search DB path;
-    var search_path = "";
+    var search_path = "search.xml";
     if (search_path.length === 0) {
       search_path = "search.xml";
     } else if (/json$/i.test(search_path)) {
