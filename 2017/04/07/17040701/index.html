@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -83,13 +83,16 @@
 
 
 
-<meta name="description" content="All or nothing, Now or never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DInG_BloG">
-<meta property="og:url" content="http://www.grapedlinux.cn/archives/index.html">
+<meta name="description" content="MySQL调优可以从几个方面来做： 架构层：做从库，实现读写分离； 系统层次：增加内存；给磁盘做raid0或者raid5以增加磁盘的读写速度；RAID相关可以重新挂载磁盘，并加上noatime参数，这样可以减少磁盘的i&#x2F;o; MySQL本身调优：(1) 如果未配置主从同步，可以把bin-log功能关闭，减少磁盘i&#x2F;o(2) 在my.cnf中加上skip-name-resolve,这样可以避免由于解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL调优">
+<meta property="og:url" content="http://www.grapedlinux.cn/2017/04/07/17040701/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="All or nothing, Now or never.">
+<meta property="og:description" content="MySQL调优可以从几个方面来做： 架构层：做从库，实现读写分离； 系统层次：增加内存；给磁盘做raid0或者raid5以增加磁盘的读写速度；RAID相关可以重新挂载磁盘，并加上noatime参数，这样可以减少磁盘的i&#x2F;o; MySQL本身调优：(1) 如果未配置主从同步，可以把bin-log功能关闭，减少磁盘i&#x2F;o(2) 在my.cnf中加上skip-name-resolve,这样可以避免由于解">
+<meta property="article:published_time" content="2017-04-07T12:15:18.000Z">
+<meta property="article:modified_time" content="2017-04-07T15:08:31.548Z">
 <meta property="article:author" content="Graped">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://www.grapedlinux.cn/archives/"/>
+  <link rel="canonical" href="http://www.grapedlinux.cn/2017/04/07/17040701/"/>
 
 
 
 
 
-  <title>归档 | DInG_BloG</title>
+  <title>MySQL调优 | DInG_BloG</title>
   
 
 
@@ -145,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -297,415 +300,227 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 48 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2017/04/07/17040701/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Graped">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/10/07/iGo4Cd.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DInG_BloG">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">MySQL调优</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-07T20:15:18+08:00">
+                2017-04-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/19/python%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8Cpycharm%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">python的安装和pycharm的使用</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-19T11:36:58+08:00"
-              content="2018-11-19" >
-          11-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/" itemprop="url">
               
-                <span itemprop="name">使用ansible-playbook推送安装nginx</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-12T22:57:12+08:00"
-              content="2018-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/08/Ansible%E4%BB%8B%E7%BB%8D/" itemprop="url">
-              
-                <span itemprop="name">Ansible详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-08T11:45:12+08:00"
-              content="2018-10-08" >
-          10-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/18100602/" itemprop="url">
-              
-                <span itemprop="name">修改Windows实例SID以搭建域环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T18:24:09+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/06/18100601/" itemprop="url">
-              
-                <span itemprop="name">bond绑定双网卡</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-06T18:00:09+08:00"
-              content="2018-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/08/17050801/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Galera：多主同步MySQL集群原理解析</span>
+
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-08T19:50:09+08:00"
-              content="2017-05-08" >
-          05-08
-        </time>
-      </div>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/14/17041401/" itemprop="url">
-              
-                <span itemprop="name">docker详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-14T00:23:46+08:00"
-              content="2017-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/07/17040701/" itemprop="url">
-              
-                <span itemprop="name">MySQL调优</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-07T20:15:18+08:00"
-              content="2017-04-07" >
-          04-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>MySQL调优可以从几个方面来做：</p>
+<p><strong>架构层：</strong><br>做从库，实现读写分离；</p>
+<p><strong>系统层次：</strong><br>增加内存；<br>给磁盘做raid0或者raid5以增加磁盘的读写速度；<a href="http://ask.apelearn.com/question/7134" target="_blank" rel="noopener">RAID相关</a><br>可以重新挂载磁盘，并加上noatime参数，这样可以减少磁盘的i/o;</p>
+<p><strong>MySQL本身调优：</strong><br>(1) 如果未配置主从同步，可以把bin-log功能关闭，减少磁盘i/o<br>(2) 在my.cnf中加上skip-name-resolve,这样可以避免由于解析主机名延迟造成mysql执行慢<br>(3) 调整几个关键的buffer和cache。调整的依据，主要根据数据库的状态来调试。如何调优可以参考5.</p>
+<p><strong>应用层次：</strong><br>查看慢查询日志，根据慢查询日志优化程序中的SQL语句，比如增加索引</p>
+<p><strong>调整几个关键的buffer和cache</strong></p>
+<p>1) key_buffer_size  首先可以根据系统的内存大小设定它，大概的一个参考值：1G以下内存设定128M；2G/256M; 4G/384M;8G/1024M；16G/2048M.这个值可以通过检查状态值Key_read_requests和 Key_reads,可以知道key_buffer_size设置是否合理。比例key_reads / key_read_requests应该尽可能的低，至少是1:100，1:1000更好(上述状态值可以使用SHOW STATUS LIKE ‘key_read%’获得)。注意：该参数值设置的过大反而会是服务器整体效率降低!</p>
+<p>2) table_open_cache 打开一个表的时候，会临时把表里面的数据放到这部分内存中，一般设置成1024就够了，它的大小我们可以通过这样的方法来衡量： 如果你发现 open_tables等于table_cache，并且opened_tables在不断增长，那么你就需要增加table_cache的值了(上述状态值可以使用SHOW STATUS LIKE ‘Open%tables’获得)。注意，不能盲目地把table_cache设置成很大的值。如果设置得太高，可能会造成文件描述符不足，从而造成性能不稳定或者连接失败。</p>
+<p>3) sort_buffer_size 查询排序时所能使用的缓冲区大小,该参数对应的分配内存是每连接独占!如果有100个连接，那么实际分配的总共排序缓冲区大小为100 × 4 = 400MB。所以，对于内存在4GB左右的服务器推荐设置为4-8M。</p>
+<p>4) read_buffer_size 读查询操作所能使用的缓冲区大小。和sort_buffer_size一样，该参数对应的分配内存也是每连接独享!</p>
+<p>5) join_buffer_size 联合查询操作所能使用的缓冲区大小，和sort_buffer_size一样，该参数对应的分配内存也是每连接独享!</p>
+<p>6) myisam_sort_buffer_size 这个缓冲区主要用于修复表过程中排序索引使用的内存或者是建立索引时排序索引用到的内存大小，一般4G内存给64M即可。</p>
+<p>7) query_cache_size MySQL查询操作缓冲区的大小，通过以下做法调整：SHOW STATUS LIKE ‘Qcache%’; 如果Qcache_lowmem_prunes该参数记录有多少条查询因为内存不足而被移除出查询缓存。通过这个值，用户可以适当的调整缓存大小。如果该值非常大，则表明经常出现缓冲不够的情况，需要增加缓存大小;Qcache_free_memory:查询缓存的内存大小，通过这个参数可以很清晰的知道当前系统的查询内存是否够用，是多了，还是不够用，我们可以根据实际情况做出调整。一般情况下4G内存设置64M足够了。</p>
+<p>8) thread_cache_size 表示可以重新利用保存在缓存中线程的数，参考如下值：1G  —&gt; 8 2G  —&gt; 16 3G  —&gt; 32  &gt;3G  —&gt; 64<br>除此之外，还有几个比较关键的参数：</p>
+<p>9) thread_concurrency 这个值设置为cpu核数的2倍即可</p>
+<p>10) wait_timeout 表示空闲的连接超时时间，默认是28800s，这个参数是和interactive_timeout一起使用的，也就是说要想让wait_timeout 生效，必须同时设置interactive_timeout，建议他们两个都设置为10</p>
+<p>11) max_connect_errors 是一个MySQL中与安全有关的计数器值，它负责阻止过多尝试失败的客户端以防止暴力破解密码的情况。与性能并无太大关系。为了避免一些错误我们一般都设置比较大，比如说10000 </p>
+<p>12) max_connections 最大的连接数，根据业务请求量适当调整，设置500足够</p>
+<p>13) max_user_connections 是指同一个账号能够同时连接到mysql服务的最大连接数。设置为0表示不限制。通常我们设置为100足够 </p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040502/" itemprop="url">
-              
-                <span itemprop="name">Hadoop伪分布式安装</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T23:46:19+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040501/" itemprop="url">
-              
-                <span itemprop="name">rsync 自动安装脚本</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T15:15:36+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Graped
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.grapedlinux.cn/2017/04/07/17040701/" title="MySQL调优">http://www.grapedlinux.cn/2017/04/07/17040701/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/05/17040502/" rel="next" title="Hadoop伪分布式安装">
+                <i class="fa fa-chevron-left"></i> Hadoop伪分布式安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/14/17041401/" rel="prev" title="docker详解">
+                docker详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -713,6 +528,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -989,6 +808,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

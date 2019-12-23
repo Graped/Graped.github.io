@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="nginx,java," />
 
 
 
@@ -83,14 +83,34 @@
 
 
 
-<meta name="description" content="All or nothing, Now or never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DInG_BloG">
-<meta property="og:url" content="http://www.grapedlinux.cn/archives/index.html">
+<meta name="description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat&#x2F;conf&#x2F;目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx+tomcat 配置负载均衡集群">
+<meta property="og:url" content="http://www.grapedlinux.cn/2017/04/04/17040401/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="All or nothing, Now or never.">
+<meta property="og:description" content="一、Hello world1、前期环境准备 准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：首先去apache tomcat官网下载一个tomcat解压版。解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，然后修改server.xml配置文件，分别进入tomcat&#x2F;conf&#x2F;目录，修改server.xml，一共三处。第一处：第二处、tomcat访问">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0328/160419_P4o4_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0328/160549_uR0Y_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/094952_RXZx_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/095118_fqsy_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/095239_9NmQ_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/170630_Ttmb_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/171827_v9qA_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/171214_rx4B_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0329/171320_bKZP_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/102251_yVyP_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/104335_4Scb_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/113528_YZCP_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/113005_QuQG_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/112827_dFRT_3203872.png">
+<meta property="og:image" content="https://static.oschina.net/uploads/space/2017/0330/112757_RGPA_3203872.png">
+<meta property="article:published_time" content="2017-04-04T02:38:51.000Z">
+<meta property="article:modified_time" content="2017-04-04T03:40:09.996Z">
 <meta property="article:author" content="Graped">
+<meta property="article:tag" content="nginx,java">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png">
 
 
 
@@ -120,13 +140,13 @@
 
 
 
-  <link rel="canonical" href="http://www.grapedlinux.cn/archives/"/>
+  <link rel="canonical" href="http://www.grapedlinux.cn/2017/04/04/17040401/"/>
 
 
 
 
 
-  <title>归档 | DInG_BloG</title>
+  <title>nginx+tomcat 配置负载均衡集群 | DInG_BloG</title>
   
 
 
@@ -145,7 +165,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -297,415 +317,219 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 48 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2017/04/04/17040401/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Graped">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/10/07/iGo4Cd.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DInG_BloG">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">nginx+tomcat 配置负载均衡集群</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T10:38:51+08:00">
+                2017-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/19/python%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8Cpycharm%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
               
-                <span itemprop="name">python的安装和pycharm的使用</span>
+                <span class="post-meta-item-text">分类于</span>
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-19T11:36:58+08:00"
-              content="2018-11-19" >
-          11-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/" itemprop="url">
               
-                <span itemprop="name">使用ansible-playbook推送安装nginx</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1/" itemprop="url" rel="index">
+                    <span itemprop="name">负载均衡</span>
+                  </a>
+                </span>
+
+                
+                
               
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-12T22:57:12+08:00"
-              content="2018-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/08/Ansible%E4%BB%8B%E7%BB%8D/" itemprop="url">
-              
-                <span itemprop="name">Ansible详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-08T11:45:12+08:00"
-              content="2018-10-08" >
-          10-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/18100602/" itemprop="url">
-              
-                <span itemprop="name">修改Windows实例SID以搭建域环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T18:24:09+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/06/18100601/" itemprop="url">
-              
-                <span itemprop="name">bond绑定双网卡</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-06T18:00:09+08:00"
-              content="2018-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/08/17050801/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Galera：多主同步MySQL集群原理解析</span>
+
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-08T19:50:09+08:00"
-              content="2017-05-08" >
-          05-08
-        </time>
-      </div>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/14/17041401/" itemprop="url">
-              
-                <span itemprop="name">docker详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-14T00:23:46+08:00"
-              content="2017-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/07/17040701/" itemprop="url">
-              
-                <span itemprop="name">MySQL调优</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-07T20:15:18+08:00"
-              content="2017-04-07" >
-          04-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h5 id="一、Hello-world"><a href="#一、Hello-world" class="headerlink" title="一、Hello world"></a>一、Hello world</h5><h6 id="1、前期环境准备"><a href="#1、前期环境准备" class="headerlink" title="1、前期环境准备"></a>1、前期环境准备</h6><ol>
+<li>准备两个解压版tomcat，如何同时启动两个tomcat，方法如下：<br>首先去<a href="http://tomcat.apache.org/download-70.cgi" target="_blank" rel="noopener">apache tomcat官网</a>下载一个tomcat解压版。<img src="https://static.oschina.net/uploads/space/2017/0328/160127_sJXZ_3203872.png" alt="image"><br>解压该压缩包，生成n份tomcat 分别命名为 tomcat1，tomcat2，<br><img src="https://static.oschina.net/uploads/space/2017/0328/160419_P4o4_3203872.png" alt="image"><br>然后修改server.xml配置文件，分别进入tomcat/conf/目录，修改server.xml，一共三处。<br><img src="https://static.oschina.net/uploads/space/2017/0328/160549_uR0Y_3203872.png" alt="image"><br>第一处：<br><img src="https://static.oschina.net/uploads/space/2017/0329/094952_RXZx_3203872.png" alt="image"><br>第二处、tomcat访问端口号：<br><img src="https://static.oschina.net/uploads/space/2017/0329/095118_fqsy_3203872.png" alt="image"><br>第三处：<br><img src="https://static.oschina.net/uploads/space/2017/0329/095239_9NmQ_3203872.png" alt="image"><br>之后修改bin下的启动文件<br>分别进入tomcat/bin目录，修改 startup.bat<br>在文件第一行添加如下配置（添加时删除#注释，在startup.bat文件中rem代表注释）：在文件第一行添加如下配置（添加时删除#注释，在startup.bat文件中rem代表注释）：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># tomcat名称</span><br><span class="line">set TITLE&#x3D;&quot;tomcat1&quot;</span><br><span class="line"># tomcat启动路径</span><br><span class="line">set CATALINA_BASE&#x3D;&quot;D:\tools\tomcat1&quot;</span><br><span class="line">set CATALINA_HOME&#x3D;&quot;D:\tools\tomcat1&quot;</span><br><span class="line"># JDK所在路径，如果环境变量已经配置，则可忽略，前提是你所有tomcat要共用一个jdk。另外如果设置，此处路径不能有空格</span><br><span class="line">SET JAVA_HOME&#x3D;&quot;D:\Java\jdk1.7.0_45&quot;</span><br></pre></td></tr></table></figure>
+如图：<br><img src="https://static.oschina.net/uploads/space/2017/0329/170630_Ttmb_3203872.png" alt="image"><br><img src="https://static.oschina.net/uploads/space/2017/0329/171827_v9qA_3203872.png" alt="image"><br>启动tomcat<br>平常直接双击startup.bat即可，但是为了查看配置信息，可以在cmd中启动，如下图：<br><img src="https://static.oschina.net/uploads/space/2017/0329/171214_rx4B_3203872.png" alt="image"><br>访问tomcat<br>在浏览器地址栏输入：<a href="http://localhost:8081" target="_blank" rel="noopener">http://localhost:8081</a> 和 <a href="http://localhost:8082" target="_blank" rel="noopener">http://localhost:8082</a><br><img src="https://static.oschina.net/uploads/space/2017/0329/171320_bKZP_3203872.png" alt="image"></li>
+<li><a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">nginx官网</a>下载解压版nginx。</li>
+<li>创建一个简单的web项目。为了直观的区分访问的哪个tomcat，在页面写上标记8081、8082。<img src="https://static.oschina.net/uploads/space/2017/0330/102251_yVyP_3203872.png" alt="image"></li>
+<li>分别部署到对应的tomcat下。如图：<img src="https://static.oschina.net/uploads/space/2017/0330/104335_4Scb_3203872.png" alt="image"><h6 id="2、配置nginx"><a href="#2、配置nginx" class="headerlink" title="2、配置nginx"></a>2、配置nginx</h6>进入nginx-1.10.1\conf路径，修改配置文件nginx.conf。</li>
+<li>配置服务器组，在http{}节点之间添加upstream配置。（注意不要写localhost，不然访问速度会很慢）<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream nginxDemo &#123;</span><br><span class="line">    server 127.0.0.1:8081;   #服务器地址1</span><br><span class="line">    server 127.0.0.1:8082;   #服务器地址2</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>修改nginx监听的端口号80，改为8080。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       8080;</span><br><span class="line">    ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在location{}中，利用proxy_pass配置反向代理地址；此处“http://”不能少，后面的地址要和第一步upstream定义的名称保持一致。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">        root   html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        proxy_pass http:&#x2F;&#x2F;nginxDemo; #配置方向代理地址</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+如下图：<br><img src="https://static.oschina.net/uploads/space/2017/0330/113528_YZCP_3203872.png" alt="image"><h6 id="3、启动nginx和tomcat，访问"><a href="#3、启动nginx和tomcat，访问" class="headerlink" title="3、启动nginx和tomcat，访问"></a>3、启动nginx和tomcat，访问</h6>我是Windows系统，所以直接在nginx-1.10.1目录下双击nginx.exe即可。可在任务管理器中查看：<br><img src="https://static.oschina.net/uploads/space/2017/0330/113005_QuQG_3203872.png" alt="image"><br>最后在浏览器输入地址：<a href="http://localhost:8080/nginxDemo/index.jsp，每次访问就会轮流访问tomcat了（如果F5刷新不管用，建议试试鼠标指针放到地址栏，点击Enter键）。" target="_blank" rel="noopener">http://localhost:8080/nginxDemo/index.jsp，每次访问就会轮流访问tomcat了（如果F5刷新不管用，建议试试鼠标指针放到地址栏，点击Enter键）。</a><br><img src="https://static.oschina.net/uploads/space/2017/0330/112827_dFRT_3203872.png" alt="image"><br><img src="https://static.oschina.net/uploads/space/2017/0330/112757_RGPA_3203872.png" alt="image"><br>到这里，一个非常简单的负载均衡就配置完成了。</li>
+</ol>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040502/" itemprop="url">
-              
-                <span itemprop="name">Hadoop伪分布式安装</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T23:46:19+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040501/" itemprop="url">
-              
-                <span itemprop="name">rsync 自动安装脚本</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T15:15:36+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Graped
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.grapedlinux.cn/2017/04/04/17040401/" title="nginx+tomcat 配置负载均衡集群">http://www.grapedlinux.cn/2017/04/04/17040401/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx-java/" rel="tag"># nginx,java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/04/03/17040301/" rel="next" title="Nginx主要应用场景">
+                <i class="fa fa-chevron-left"></i> Nginx主要应用场景
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/04/17040403/" rel="prev" title="Redis详解">
+                Redis详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -713,6 +537,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -733,8 +561,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -833,6 +670,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#一、Hello-world"><span class="nav-number">1.</span> <span class="nav-text">一、Hello world</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1、前期环境准备"><span class="nav-number">1.1.</span> <span class="nav-text">1、前期环境准备</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2、配置nginx"><span class="nav-number">1.2.</span> <span class="nav-text">2、配置nginx</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3、启动nginx和tomcat，访问"><span class="nav-number">1.3.</span> <span class="nav-text">3、启动nginx和tomcat，访问</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -989,6 +842,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

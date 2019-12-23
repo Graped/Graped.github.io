@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Windows server," />
 
 
 
@@ -83,14 +83,20 @@
 
 
 
-<meta name="description" content="All or nothing, Now or never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DInG_BloG">
-<meta property="og:url" content="http://www.grapedlinux.cn/archives/index.html">
+<meta name="description" content="[TOC] 修改Windows实例SID以搭建域环境使用同一个Windows镜像创建的几台实例之间无法互相访问域或者无法同时加入域。 原因分析使用同一个Windows镜像的几台实例，其SID（计算机安全标识符Security Identifier）是一样的。此时需要修改系统SID，以避免无法相互访问域，再进行域环境的搭建。 解决方法Windows系统自带sysprep命令可以从已安装的Window">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修改Windows实例SID以搭建域环境">
+<meta property="og:url" content="http://www.grapedlinux.cn/2018/10/07/18100602/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="All or nothing, Now or never.">
+<meta property="og:description" content="[TOC] 修改Windows实例SID以搭建域环境使用同一个Windows镜像创建的几台实例之间无法互相访问域或者无法同时加入域。 原因分析使用同一个Windows镜像的几台实例，其SID（计算机安全标识符Security Identifier）是一样的。此时需要修改系统SID，以避免无法相互访问域，再进行域环境的搭建。 解决方法Windows系统自带sysprep命令可以从已安装的Window">
+<meta property="og:image" content="https://s1.ax1x.com/2018/10/09/iJqnPS.png">
+<meta property="og:image" content="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/40846/cn_zh/1505371316862/WhoAmIUser.png">
+<meta property="article:published_time" content="2018-10-07T10:24:09.000Z">
+<meta property="article:modified_time" content="2018-10-10T03:07:27.839Z">
 <meta property="article:author" content="Graped">
+<meta property="article:tag" content="Windows server">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2018/10/09/iJqnPS.png">
 
 
 
@@ -120,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://www.grapedlinux.cn/archives/"/>
+  <link rel="canonical" href="http://www.grapedlinux.cn/2018/10/07/18100602/"/>
 
 
 
 
 
-  <title>归档 | DInG_BloG</title>
+  <title>修改Windows实例SID以搭建域环境 | DInG_BloG</title>
   
 
 
@@ -145,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -297,415 +303,260 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 48 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2018/10/07/18100602/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Graped">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/10/07/iGo4Cd.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DInG_BloG">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">修改Windows实例SID以搭建域环境</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:24:09+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/19/python%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8Cpycharm%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
-              
-                <span itemprop="name">python的安装和pycharm的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-19T11:36:58+08:00"
-              content="2018-11-19" >
-          11-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/" itemprop="url">
-              
-                <span itemprop="name">使用ansible-playbook推送安装nginx</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-12T22:57:12+08:00"
-              content="2018-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/08/Ansible%E4%BB%8B%E7%BB%8D/" itemprop="url">
-              
-                <span itemprop="name">Ansible详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-08T11:45:12+08:00"
-              content="2018-10-08" >
-          10-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/18100602/" itemprop="url">
-              
-                <span itemprop="name">修改Windows实例SID以搭建域环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T18:24:09+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/06/18100601/" itemprop="url">
-              
-                <span itemprop="name">bond绑定双网卡</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-06T18:00:09+08:00"
-              content="2018-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/08/17050801/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Galera：多主同步MySQL集群原理解析</span>
+
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-08T19:50:09+08:00"
-              content="2017-05-08" >
-          05-08
-        </time>
-      </div>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/14/17041401/" itemprop="url">
-              
-                <span itemprop="name">docker详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-14T00:23:46+08:00"
-              content="2017-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <p>[TOC]</p>
+<h1 id="修改Windows实例SID以搭建域环境"><a href="#修改Windows实例SID以搭建域环境" class="headerlink" title="修改Windows实例SID以搭建域环境"></a>修改Windows实例SID以搭建域环境</h1><p>使用同一个Windows镜像创建的几台实例之间无法互相访问域或者无法同时加入域。</p>
+<h1 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h1><p>使用同一个Windows镜像的几台实例，其SID（计算机安全标识符Security Identifier）是一样的。此时需要修改系统SID，以避免无法相互访问域，再进行域环境的搭建。</p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>Windows系统自带sysprep命令可以从已安装的Windows映像删除所有系统特定的信息，其中包括SID。脚本工具sysprep.ps1使用系统自带sysprep命令完成修改Windows SID。本文描述如何使用脚本工具sysprep.ps1修改系统SID。文档描述的内容适用于Windows Server 2008、Windows Server 2012和Windows Server 2016系统。</p>
+<blockquote>
+<p>注意：</p>
+</blockquote>
+<ul>
+<li>在修改系统SID前，建议您为系统盘创建快照，避免意外失败导致系统崩溃。</li>
+<li>sysprep会将User Profile恢复为默认值，执行sysprep后会删除桌面上创建的文件。如果您希望执行脚本后自动删除，可以将文件放置在桌面上执行。</li>
+</ul>
+<h2 id="修改系统SID"><a href="#修改系统SID" class="headerlink" title="修改系统SID"></a>修改系统SID</h2><p>按以下步骤修改系统SID。</p>
+<ul>
+<li><p><a href="https://help.aliyun.com/document_detail/25435.html?spm=a2c4g.11186623.2.14.21844abaGxsHT4" target="_blank" rel="noopener">远程连接Windows实例。</a></p>
+</li>
+<li><p>下载脚本工具 <a href="https://box.lenovo.com/l/c1cABd" target="_blank" rel="noopener">sysprep.ps1</a>，存放在C盘。</p>
+</li>
+<li><p>启动CMD，运行命令 powershell。</p>
+</li>
+</ul>
+<blockquote>
+<p>注意：<br>如果您不是管理员用户，必须以管理员身份运行PowerShell。</p>
+</blockquote>
+<ul>
+<li><p>运行命令 cd\ 切换路径到C盘根目录。</p>
+</li>
+<li><p>运行命令 .\Sysprep.ps1 -help 查看脚本说明。</p>
+</li>
+</ul>
+<p><img src="https://s1.ax1x.com/2018/10/09/iJqnPS.png" alt="IMG1"></p>
+<p>查看脚本说明<br>参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th align="right">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-skiprearm</td>
+<td align="right">默认将Windows操作系统恢复到原始授权许可状态，如不需恢复，添加该参数。</td>
+</tr>
+<tr>
+<td>-ReserveNetwork</td>
+<td align="right">运行脚本后保留经典网络实例的网络配置信息（IP、Subnet、Gateway、DNS），不会变动VPC网络类型ECS实例使用DHCP获取IP的配置。</td>
+</tr>
+<tr>
+<td>-skippassword</td>
+<td align="right">使用默认密码</td>
+</tr>
+<tr>
+<td>-ReserveHostname</td>
+<td align="right">保持主机名不变</td>
+</tr>
+<tr>
+<td>-post_action</td>
+<td align="right">运行脚本后的后续操作。取值范围：shutdown,reboot,quit</td>
+</tr>
+</tbody></table>
+<ul>
+<li>运行命令 whoami /user 查看系统SID。<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WhoAmIUser</span><br></pre></td></tr></table></figure>
 
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/07/17040701/" itemprop="url">
-              
-                <span itemprop="name">MySQL调优</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-07T20:15:18+08:00"
-              content="2017-04-07" >
-          04-07
-        </time>
-      </div>
-
-    </header>
-  </article>
+</li>
+</ul>
+<p><img src="http://docs-aliyun.cn-hangzhou.oss.aliyun-inc.com/assets/pic/40846/cn_zh/1505371316862/WhoAmIUser.png" alt="image2"></p>
+<ul>
+<li>运行命令<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">.\Sysprep.ps1 <span class="literal">-ReserveHostname</span> <span class="literal">-ReserveNetwork</span> <span class="literal">-skiprearm</span> <span class="literal">-post_action</span> <span class="string">"reboot"</span> </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 在弹窗中输入密码，并单击 确定，使实例自动重启。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![<span class="type">image2</span>](https://s1.ax1x.com/<span class="number">2018</span>/<span class="number">10</span>/<span class="number">09</span>/iJqVVP.png)</span><br><span class="line"></span><br><span class="line">- [远程连接<span class="type">Windows</span>实例。](https://help.aliyun.com/document_detail/<span class="number">25435</span>.html?spm=a2c4g.<span class="number">11186623.2</span>.<span class="number">14.21844</span>abaGxsHT4)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">运行命令 重新查看系统SID。</span><br><span class="line">```powershell</span><br><span class="line">whoami /user</span><br></pre></td></tr></table></figure>
 
 
+</li>
+</ul>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>如果没有特定要求，运行以下命令时您需要修改密码。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">powershell <span class="literal">-executionpolicy</span> bypass <span class="operator">-file</span> c:\sysprep.ps1 <span class="literal">-ReserveHostname</span> <span class="literal">-ReserveNetwork</span> <span class="literal">-skiprearm</span> <span class="literal">-post_action</span> <span class="string">"reboot"</span></span><br></pre></td></tr></table></figure>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040502/" itemprop="url">
-              
-                <span itemprop="name">Hadoop伪分布式安装</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T23:46:19+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040501/" itemprop="url">
-              
-                <span itemprop="name">rsync 自动安装脚本</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T15:15:36+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Graped
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.grapedlinux.cn/2018/10/07/18100602/" title="修改Windows实例SID以搭建域环境">http://www.grapedlinux.cn/2018/10/07/18100602/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Windows-server/" rel="tag"># Windows server</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/06/18100601/" rel="next" title="bond绑定双网卡">
+                <i class="fa fa-chevron-left"></i> bond绑定双网卡
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/08/Ansible%E4%BB%8B%E7%BB%8D/" rel="prev" title="Ansible详解">
+                Ansible详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -713,6 +564,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -733,8 +588,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -833,6 +697,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#修改Windows实例SID以搭建域环境"><span class="nav-number">1.</span> <span class="nav-text">修改Windows实例SID以搭建域环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原因分析"><span class="nav-number">2.</span> <span class="nav-text">原因分析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">3.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改系统SID"><span class="nav-number">3.1.</span> <span class="nav-text">修改系统SID</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">4.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -989,6 +869,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

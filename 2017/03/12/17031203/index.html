@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -83,13 +83,16 @@
 
 
 
-<meta name="description" content="All or nothing, Now or never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DInG_BloG">
-<meta property="og:url" content="http://www.grapedlinux.cn/archives/index.html">
+<meta name="description" content="对于LNMP来说，最常见的就是502问题了，配置完环境后，一访问网站直接提示“502 Bad GateWay”。出现502的最大原因大致分为这两种。 一、配置错误。location ~ .php$ {  root           html;  fastcgi_pass   127.0.0.1:9000;  fastcgi_index  index.php;  fastcgi_param  SC">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常见的 502 问题解决">
+<meta property="og:url" content="http://www.grapedlinux.cn/2017/03/12/17031203/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="All or nothing, Now or never.">
+<meta property="og:description" content="对于LNMP来说，最常见的就是502问题了，配置完环境后，一访问网站直接提示“502 Bad GateWay”。出现502的最大原因大致分为这两种。 一、配置错误。location ~ .php$ {  root           html;  fastcgi_pass   127.0.0.1:9000;  fastcgi_index  index.php;  fastcgi_param  SC">
+<meta property="article:published_time" content="2017-03-12T10:38:51.000Z">
+<meta property="article:modified_time" content="2017-03-12T10:40:27.589Z">
 <meta property="article:author" content="Graped">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://www.grapedlinux.cn/archives/"/>
+  <link rel="canonical" href="http://www.grapedlinux.cn/2017/03/12/17031203/"/>
 
 
 
 
 
-  <title>归档 | DInG_BloG</title>
+  <title>常见的 502 问题解决 | DInG_BloG</title>
   
 
 
@@ -145,7 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -297,415 +300,191 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 目前共计 48 篇日志。 继续努力。
-      </span>
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2017/03/12/17031203/">
 
-      
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Graped">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2018/10/07/iGo4Cd.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DInG_BloG">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">常见的 502 问题解决</h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-12T18:38:51+08:00">
+                2017-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/19/python%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8Cpycharm%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="url">
-              
-                <span itemprop="name">python的安装和pycharm的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-11-19T11:36:58+08:00"
-              content="2018-11-19" >
-          11-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/12/%E4%BD%BF%E7%94%A8ansible-playbook%E6%8E%A8%E9%80%81%E5%AE%89%E8%A3%85nginx/" itemprop="url">
-              
-                <span itemprop="name">使用ansible-playbook推送安装nginx</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-12T22:57:12+08:00"
-              content="2018-10-12" >
-          10-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/08/Ansible%E4%BB%8B%E7%BB%8D/" itemprop="url">
-              
-                <span itemprop="name">Ansible详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-08T11:45:12+08:00"
-              content="2018-10-08" >
-          10-08
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/07/18100602/" itemprop="url">
-              
-                <span itemprop="name">修改Windows实例SID以搭建域环境</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-07T18:24:09+08:00"
-              content="2018-10-07" >
-          10-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/10/06/18100601/" itemprop="url">
-              
-                <span itemprop="name">bond绑定双网卡</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-10-06T18:00:09+08:00"
-              content="2018-10-06" >
-          10-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2017">2017</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/05/08/17050801/" itemprop="url">
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">Galera：多主同步MySQL集群原理解析</span>
+
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-05-08T19:50:09+08:00"
-              content="2017-05-08" >
-          05-08
-        </time>
-      </div>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  
+                </span>
+              
+            </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/14/17041401/" itemprop="url">
-              
-                <span itemprop="name">docker详解</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-14T00:23:46+08:00"
-              content="2017-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/07/17040701/" itemprop="url">
-              
-                <span itemprop="name">MySQL调优</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-07T20:15:18+08:00"
-              content="2017-04-07" >
-          04-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>对于LNMP来说，最常见的就是502问题了，配置完环境后，一访问网站直接提示“502 Bad GateWay”。出现502的最大原因大致分为这两种。</p>
+<p>一、配置错误。<br>location ~ .php$ {<br>  root           html;<br>  fastcgi_pass   127.0.0.1:9000;<br>  fastcgi_index  index.php;<br>  fastcgi_param  SCRIPT_FILENAME /usr/local/nginx/html$fastcgi_script_name;<br>  include        fastcgi_params;<br>}</p>
+<p>如果把fastcgi_pass 后面指定的路径配置错了，那么就会出现502的错误，因为nginx找不到php-fpm了。fastcgi_pass后面可以跟socket 也可以跟ip:port，默认的监听地址为：127.0.0.1:9000。</p>
+<p>二、资源耗尽。<br>LNMP架构处理php时，是nginx直接调去后端的php-fpm服务，如果nginx的请求量偏高，而我们又没有给php-fpm配置足够的子进程，那么总有php-fpm资源耗尽的时候，一旦耗尽nginx则找不到php-fpm，此时就会导致502出现。那这时候的解决方案就是去调整php-fpm.conf 中的php.max_children的数值，使其增加。但也不能无限设置，毕竟服务器的资源有限，根据经验，4G内存机器如果只跑php-fpm和nginx，不跑mysql服务，php.max_children可以设置为150，精良不要超过该数值，8G可以设置成300一次类推。</p>
+<p>如果不是以上两种错误，可以通过查看日志文件来排查错误，</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040502/" itemprop="url">
-              
-                <span itemprop="name">Hadoop伪分布式安装</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T23:46:19+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/05/17040501/" itemprop="url">
-              
-                <span itemprop="name">rsync 自动安装脚本</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-05T15:15:36+08:00"
-              content="2017-04-05" >
-          04-05
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    Graped
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://www.grapedlinux.cn/2017/03/12/17031203/" title="常见的 502 问题解决">http://www.grapedlinux.cn/2017/03/12/17031203/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux/" rel="tag"># linux</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/12/17031202/" rel="next" title="测试PHP解析">
+                <i class="fa fa-chevron-left"></i> 测试PHP解析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/12/17031204/" rel="prev" title="nginx 用户认证">
+                nginx 用户认证 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -713,6 +492,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -989,6 +772,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
