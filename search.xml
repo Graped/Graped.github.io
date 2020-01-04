@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Nginx配置文件详解]]></title>
+    <url>%2F2020%2F01%2F05%2FNginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"></content>
+      <categories>
+        <category>运维技巧</category>
+      </categories>
+      <tags>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[python的安装和pycharm的使用]]></title>
     <url>%2F2018%2F11%2F19%2Fpython%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8Cpycharm%E7%9A%84%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[环境安装在windows 10上安装ptyhon 2.7.13和3.7.0 去网站 www.python.org/downloads 根据所需下载相对应版本，然后双击安装，一直保持默认即可。 备注: 在安装时候可以通过勾选添加系统环境变量来自动添加系统环境变量，如下图 安装好了输入python3和python会显示如图效果： 在Centos7.3上安装python2和python3Centos7 默认自带python2.712345[root@GrapedLinux ~]# pythonPython 2.7.5 (default, Nov 6 2016, 00:28:07) [GCC 4.8.5 20150623 (Red Hat 4.8.5-11)] on linux2Type "help", "copyright", "credits" or "license" for more information.&gt;&gt;&gt; centos7.3安装python3.7.0 请跳转：centos安装python3 全部安装好后，在centos上也可以同时使用pyhton和python3 在Window 10上安装安装 PyCharm 去网站 www.jetbrains.com/pycharm 下载最新的pro版本pycharm 然后根据网上的教程进行激活操作，点击跳转参考资料 设置PyCharm 抬头第一次使用的时候，我们可以通过File-&gt;setting-&gt;Editot-&gt;Code Style-&gt;File and Code Templates -&gt;Python Script 来设置成如下的抬头1234#!/usr/bin/env python# -*- coding: utf-8 -*-# @Time : $&#123;DATE&#125; $&#123;TIME&#125;# @Author : Graped 第一个python例子12345# -*- coding:utf-8 -*-# @Time : 2017/4/8 17:40# @Author : Grapedname = raw_input(&quot;print input your name: &quot;) # raw_input 此函数用来和用户进行参数交互print(&quot;hello &quot; + name) Pycharm常用快捷键 Ctrl + c Ctrl + x Ctrl + v Ctrl + d Ctrl + shif + n Ctrl + shif + f Ctrl + 鼠标左键 Ctrl + alt + 方向左/右键 注意和系统屏幕设置的快捷键冲突 Ctrl + a； ctrl + alt + l Alt + enter Ctrl + / Tab shift +tab 如何去运行一个python程序 linux系统 123chmod + x test.py./test.pypython test.py windows系统 cmd中：1python test.py pycharm 直接点击运行 Pycharm的调试模式: 断点： 就是程序执行到这个地方停下来 F7： Step Into 相当于eclipse的f5就是 进入到代码 F8：Step Over 相当于eclipse的f6 跳到下一步 F9： resume programe 恢复程序或者执行到下一个断点]]></content>
