@@ -402,7 +402,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  10
                 </span>
               
             </div>
@@ -425,8 +425,14 @@
       
         
           
-          
-          
+          nginx.conf全局配置user nobody;
+
+定义运行nginx服务的用户,还可以加上组,如 user nobody nobody;
+
+worker_processes 1;
+
+定义nginx子进程数量，即提供服务的进程数量，该数值建议和服务cpu核数保持一致。除了可以定义数字外，还可以定
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/01/05/Nginx配置文件详解/#more" rel="contents">
@@ -1174,10 +1180,10 @@
               
               
               <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
+                
                   <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">分类</span>
-                </a>
+                
               </div>
             
 
@@ -1272,7 +1278,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">50k</span>
+    <span title="Site words total count">52.7k</span>
   
 </div>
 <!-- 
@@ -1292,7 +1298,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共50k字</span>
+  <span class="post-count">博客全站共52.7k字</span>
 </div>
 
         
