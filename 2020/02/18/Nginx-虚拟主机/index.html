@@ -70,7 +70,7 @@
 
 
 
-  <meta name="keywords" content="linux," />
+  <meta name="keywords" content="Nginx," />
 
 
 
@@ -83,18 +83,18 @@
 
 
 
-<meta name="description" content="前言本文只针对Nginx在不加载第三方模块的情况能处理哪些事情，由于第三方模块太多所以也介绍不完，当然本文本身也可能介绍的不完整，毕竟只是我个人使用过和了解到过得。所以还请见谅，同时欢迎留言交流。 Nginx能做什么1. 反向代理2. 负载均衡3. HTTP服务器（包含动静分离）4. 正向代理以上就是我了解到的Nginx在不依赖第三方模块能处理的事情，下面详细说明每种功能怎么做。 反向代理反向代理">
-<meta name="keywords" content="linux">
+<meta name="description" content="[TOC] Nginx虚拟主机配置 同一台机器上可能跑多个站点，即多个域名。在生产环境下，我们通常会配置虚拟主机来满足需求。  Nginx默认虚拟主机默认虚拟主机 就是不管什么域名解析到该服务器上，都会访问到默认虚拟主机。 前面讲过，nginx主配置文件 ==nginx.conf== 中每一个 ==server{}== 都是一个虚拟主机（站点）。一般情况下，如果没有指定，那么第一个 ==serve">
+<meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nginx主要应用场景">
-<meta property="og:url" content="http://www.grapedlinux.cn/2017/04/03/17040301/index.html">
+<meta property="og:title" content="Nginx 虚拟主机">
+<meta property="og:url" content="http://www.grapedlinux.cn/2020/02/18/Nginx-虚拟主机/index.html">
 <meta property="og:site_name" content="DInG_BloG">
-<meta property="og:description" content="前言本文只针对Nginx在不加载第三方模块的情况能处理哪些事情，由于第三方模块太多所以也介绍不完，当然本文本身也可能介绍的不完整，毕竟只是我个人使用过和了解到过得。所以还请见谅，同时欢迎留言交流。 Nginx能做什么1. 反向代理2. 负载均衡3. HTTP服务器（包含动静分离）4. 正向代理以上就是我了解到的Nginx在不依赖第三方模块能处理的事情，下面详细说明每种功能怎么做。 反向代理反向代理">
+<meta property="og:description" content="[TOC] Nginx虚拟主机配置 同一台机器上可能跑多个站点，即多个域名。在生产环境下，我们通常会配置虚拟主机来满足需求。  Nginx默认虚拟主机默认虚拟主机 就是不管什么域名解析到该服务器上，都会访问到默认虚拟主机。 前面讲过，nginx主配置文件 ==nginx.conf== 中每一个 ==server{}== 都是一个虚拟主机（站点）。一般情况下，如果没有指定，那么第一个 ==serve">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-04-03T03:26:42.397Z">
+<meta property="og:updated_time" content="2020-02-18T05:02:23.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nginx主要应用场景">
-<meta name="twitter:description" content="前言本文只针对Nginx在不加载第三方模块的情况能处理哪些事情，由于第三方模块太多所以也介绍不完，当然本文本身也可能介绍的不完整，毕竟只是我个人使用过和了解到过得。所以还请见谅，同时欢迎留言交流。 Nginx能做什么1. 反向代理2. 负载均衡3. HTTP服务器（包含动静分离）4. 正向代理以上就是我了解到的Nginx在不依赖第三方模块能处理的事情，下面详细说明每种功能怎么做。 反向代理反向代理">
+<meta name="twitter:title" content="Nginx 虚拟主机">
+<meta name="twitter:description" content="[TOC] Nginx虚拟主机配置 同一台机器上可能跑多个站点，即多个域名。在生产环境下，我们通常会配置虚拟主机来满足需求。  Nginx默认虚拟主机默认虚拟主机 就是不管什么域名解析到该服务器上，都会访问到默认虚拟主机。 前面讲过，nginx主配置文件 ==nginx.conf== 中每一个 ==server{}== 都是一个虚拟主机（站点）。一般情况下，如果没有指定，那么第一个 ==serve">
 
 
 
@@ -124,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://www.grapedlinux.cn/2017/04/03/17040301/"/>
+  <link rel="canonical" href="http://www.grapedlinux.cn/2020/02/18/Nginx-虚拟主机/"/>
 
 
 
 
 
-  <title>Nginx主要应用场景 | DInG_BloG</title>
+  <title>Nginx 虚拟主机 | DInG_BloG</title>
   
 
 
@@ -315,7 +315,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2017/04/03/17040301/">
+    <link itemprop="mainEntityOfPage" href="http://www.grapedlinux.cn/2020/02/18/Nginx-虚拟主机/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Graped">
@@ -332,7 +332,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Nginx主要应用场景</h1>
+          <h1 class="post-title" itemprop="name headline">Nginx 虚拟主机</h1>
         
 
         <div class="post-meta">
@@ -344,8 +344,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-03T11:23:42+08:00">
-                2017-04-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-18T13:01:33+08:00">
+                2020-02-18
               </time>
             
 
@@ -367,8 +367,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/nginx/" itemprop="url" rel="index">
-                    <span itemprop="name">nginx</span>
+                  <a href="/categories/运维技巧/" itemprop="url" rel="index">
+                    <span itemprop="name">运维技巧</span>
                   </a>
                 </span>
 
@@ -401,7 +401,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  8
+                  7
                 </span>
               
             </div>
@@ -422,30 +422,68 @@
       
 
       
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>本文只针对Nginx在不加载第三方模块的情况能处理哪些事情，由于第三方模块太多所以也介绍不完，当然本文本身也可能介绍的不完整，毕竟只是我个人使用过和了解到过得。所以还请见谅，同时欢迎留言交流。</p>
-<h4 id="Nginx能做什么"><a href="#Nginx能做什么" class="headerlink" title="Nginx能做什么"></a>Nginx能做什么</h4><h5 id="1-反向代理"><a href="#1-反向代理" class="headerlink" title="1. 反向代理"></a>1. 反向代理</h5><h5 id="2-负载均衡"><a href="#2-负载均衡" class="headerlink" title="2. 负载均衡"></a>2. 负载均衡</h5><h5 id="3-HTTP服务器（包含动静分离）"><a href="#3-HTTP服务器（包含动静分离）" class="headerlink" title="3. HTTP服务器（包含动静分离）"></a>3. HTTP服务器（包含动静分离）</h5><h5 id="4-正向代理"><a href="#4-正向代理" class="headerlink" title="4. 正向代理"></a>4. 正向代理</h5><p>以上就是我了解到的Nginx在不依赖第三方模块能处理的事情，下面详细说明每种功能怎么做。</p>
-<h5 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h5><p>反向代理应该是Nginx做的最多的一件事了，什么是反向代理呢，以下是百度百科的说法：反向代理（Reverse Proxy）方式是指以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个反向代理服务器。简单来说就是真实的服务器不能直接被外部网络访问，所以需要一台代理服务器，而代理服务器能被外部网络访问的同时又跟真实服务器在同一个网络环境，当然也可能是同一台服务器，端口不同而已。 下面贴上一段简单的实现反向代理的代码。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">server &#123;  </span><br><span class="line">        listen       80;                                                         </span><br><span class="line">        server_name  localhost;                                               </span><br><span class="line">        client_max_body_size 1024M;</span><br><span class="line"></span><br><span class="line">        location / &#123;</span><br><span class="line">            proxy_pass http://localhost:8080;</span><br><span class="line">            proxy_set_header Host $host:$server_port;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>保存配置文件后启动Nginx，这样当我们访问localhost的时候，就相当于访问localhost:8080了。</p>
-<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p>负载均衡也是Nginx常用的一个功能，负载均衡其意思就是分摊到多个操作单元上进行执行，例如Web服务器、FTP服务器、企业关键应用服务器和其它关键任务服务器等，从而共同完成工作任务。简单而言就是当有2台或以上服务器时，根据规则随机的将请求分发到指定的服务器上处理，负载均衡配置一般都需要同时配置反向代理，通过反向代理跳转到负载均衡。而Nginx目前支持自带3种负载均衡策略，还有2种常用的第三方策略。</p>
-<h6 id="1、RR（默认）"><a href="#1、RR（默认）" class="headerlink" title="1、RR（默认）"></a>1、RR（默认）</h6><p>每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器down掉，能自动剔除。<br>简单配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">upstream test &#123;</span><br><span class="line">     server localhost:8080;</span><br><span class="line">     server localhost:8081;</span><br><span class="line"> &#125;</span><br><span class="line"> server &#123;</span><br><span class="line">     listen       81;                                                         </span><br><span class="line">     server_name  localhost;                                               </span><br><span class="line">     client_max_body_size 1024M;</span><br><span class="line"></span><br><span class="line">     location / &#123;</span><br><span class="line">         proxy_pass http://test;</span><br><span class="line">         proxy_set_header Host $host:$server_port;</span><br><span class="line">     &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
-<p>负载均衡的核心代码为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream test &#123;</span><br><span class="line">    server localhost:8080;</span><br><span class="line">    server localhost:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这里我配置了2台服务器，当然实际上是一台，只是端口不一样而已，而8081的服务器是不存啊在的,也就是说访问不到，但是我们访问<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> 的时候,也不会有问题，会默认跳转到<a href="http://localhost:8080" target="_blank" rel="noopener">http://localhost:8080</a> 具体是因为Nginx会自动判断服务器的状态，如果服务器处于不能访问（服务器挂了），就不会跳转到这台服务器，所以也避免了一台服务器挂了影响使用的情况，由于Nginx默认是RR策略，所以我们不需要其他更多的设置。</p>
-<h6 id="2、权重"><a href="#2、权重" class="headerlink" title="2、权重"></a>2、权重</h6><p>指定轮询几率，weight和访问比率成正比，用于后端服务器性能不均的情况。 例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">upstream test &#123;</span><br><span class="line">    server localhost:8080 weight=9;</span><br><span class="line">    server localhost:8081 weight=1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>那么10次一般只会有1次会访问到8081，而有9次会访问到8080</p>
-<h6 id="3、ip-hash"><a href="#3、ip-hash" class="headerlink" title="3、ip_hash"></a>3、ip_hash</h6><p>上面的2种方式都有一个问题，那就是下一个请求来的时候请求可能分发到另外一个服务器，当我们的程序不是无状态的时候（采用了session保存数据），这时候就有一个很大的很问题了，比如把登录信息保存到了session中，那么跳转到另外一台服务器的时候就需要重新登录了，所以很多时候我们需要一个客户只访问一个服务器，那么就需要用iphash了，iphash的每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，可以解决session的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream test &#123;</span><br><span class="line">    ip_hash;</span><br><span class="line">    server localhost:8080;</span><br><span class="line">    server localhost:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h6 id="4、fair（第三方）"><a href="#4、fair（第三方）" class="headerlink" title="4、fair（第三方）"></a>4、fair（第三方）</h6><p>按后端服务器的响应时间来分配请求，响应时间短的优先分配。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">upstream backend &#123; </span><br><span class="line">    fair; </span><br><span class="line">    server localhost:8080;</span><br><span class="line">    server localhost:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h6 id="5、url-hash（第三方）"><a href="#5、url-hash（第三方）" class="headerlink" title="5、url_hash（第三方）"></a>5、url_hash（第三方）</h6><p>按访问url的hash结果来分配请求，使每个url定向到同一个后端服务器，后端服务器为缓存时比较有效。 在upstream中加入hash语句，server语句中不能写入weight等其他的参数，hash_method是使用的hash算法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">upstream backend &#123; </span><br><span class="line">    hash $request_uri; </span><br><span class="line">    hash_method crc32; </span><br><span class="line">    server localhost:8080;</span><br><span class="line">    server localhost:8081;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以上5种负载均衡各自适用不同情况下使用，所以可以根据实际情况选择使用哪种策略模式,不过fair和url_hash需要安装第三方模块才能使用，由于本文主要介绍Nginx能做的事情，所以Nginx安装第三方模块不会再本文介绍</p>
-<h5 id="HTTP服务器"><a href="#HTTP服务器" class="headerlink" title="HTTP服务器"></a>HTTP服务器</h5><p>Nginx本身也是一个静态资源的服务器，当只有静态资源的时候，就可以使用Nginx来做服务器，同时现在也很流行动静分离，就可以通过Nginx来实现，首先看看Nginx做静态资源服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">       listen       80;                                                         </span><br><span class="line">       server_name  localhost;                                               </span><br><span class="line">       client_max_body_size 1024M;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">       location / &#123;</span><br><span class="line">              root   e:\wwwroot;</span><br><span class="line">              index  index.html;</span><br><span class="line">          &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样如果访问<a href="http://localhost" target="_blank" rel="noopener">http://localhost</a> 就会默认访问到E盘wwwroot目录下面的index.html，如果一个网站只是静态页面的话，那么就可以通过这种方式来实现部署。</p>
-<h5 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h5><p>动静分离是让动态网站里的动态网页根据一定规则把不变的资源和经常变的资源区分开来，动静资源做好了拆分以后，我们就可以根据静态资源的特点将其做缓存操作，这就是网站静态化处理的核心思路<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">upstream test&#123;  </span><br><span class="line">       server localhost:8080;  </span><br><span class="line">       server localhost:8081;  </span><br><span class="line">    &#125;   </span><br><span class="line"></span><br><span class="line">    server &#123;  </span><br><span class="line">        listen       80;  </span><br><span class="line">        server_name  localhost;  </span><br><span class="line"></span><br><span class="line">        location / &#123;  </span><br><span class="line">            root   e:\wwwroot;  </span><br><span class="line">            index  index.html;  </span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">        # 所有静态请求都由nginx处理，存放目录为html  </span><br><span class="line">        location ~ \.(gif|jpg|jpeg|png|bmp|swf|css|js)$ &#123;  </span><br><span class="line">            root    e:\wwwroot;  </span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">        # 所有动态请求都转发给tomcat处理  </span><br><span class="line">        location ~ \.(jsp|do)$ &#123;  </span><br><span class="line">            proxy_pass  http://test;  </span><br><span class="line">        &#125;  </span><br><span class="line"></span><br><span class="line">        error_page   500 502 503 504  /50x.html;  </span><br><span class="line">        location = /50x.html &#123;  </span><br><span class="line">            root   e:\wwwroot;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们就可以吧HTML以及图片和css以及js放到wwwroot目录下，而tomcat只负责处理jsp和请求，例如当我们后缀为gif的时候，Nginx默认会从wwwroot获取到当前请求的动态图文件返回，当然这里的静态文件跟Nginx是同一台服务器，我们也可以在另外一台服务器，然后通过反向代理和负载均衡配置过去就好了，只要搞清楚了最基本的流程，很多配置就很简单了，另外localtion后面其实是一个正则表达式，所以非常灵活</p>
-<h5 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h5><p>正向代理，意思是一个位于客户端和原始服务器(origin server)之间的服务器，为了从原始服务器取得内容，客户端向代理发送一个请求并指定目标(原始服务器)，然后代理向原始服务器转交请求并将获得的内容返回给客户端。客户端才能使用正向代理。当你需要把你的服务器作为代理服务器的时候，可以用Nginx来实现正向代理，但是目前Nginx有一个问题，那么就是不支持HTTPS，虽然我百度到过配置HTTPS的正向代理，但是到最后发现还是代理不了，当然可能是我配置的不对，所以也希望有知道正确方法的同志们留言说明一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">resolver 114.114.114.114 8.8.8.8;</span><br><span class="line">server &#123;</span><br><span class="line"></span><br><span class="line">    resolver_timeout 5s;</span><br><span class="line"></span><br><span class="line">    listen 81;</span><br><span class="line"></span><br><span class="line">    access_log  e:\wwwroot\proxy.access.log;</span><br><span class="line">    error_log   e:\wwwroot\proxy.error.log;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://$host$request_uri;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>resolver是配置正向代理的DNS服务器，listen 是正向代理的端口，配置好了就可以在ie上面或者其他代理插件上面使用服务器ip+端口号进行代理了。</p>
-<h5 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h5><p>Nginx是支持热启动的，也就是说当我们修改配置文件后，不用关闭Nginx，就可以实现让配置生效，当然我并不知道多少人知道这个，反正我一开始并不知道，导致经常杀死了Nginx线程再来启动。。。Nginx从新读取配置的命令是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
-<p>windows下面就是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx.exe -s reload</span><br></pre></td></tr></table></figure>
+        <p>[TOC]</p>
+<h1 id="Nginx虚拟主机配置"><a href="#Nginx虚拟主机配置" class="headerlink" title="Nginx虚拟主机配置"></a>Nginx虚拟主机配置</h1><blockquote>
+<p>同一台机器上可能跑多个站点，即多个域名。在生产环境下，我们通常会配置虚拟主机来满足需求。</p>
+</blockquote>
+<h2 id="Nginx默认虚拟主机"><a href="#Nginx默认虚拟主机" class="headerlink" title="Nginx默认虚拟主机"></a>Nginx默认虚拟主机</h2><p><strong>默认虚拟主机</strong> 就是不管什么域名解析到该服务器上，都会访问到默认虚拟主机。</p>
+<p>前面讲过，nginx主配置文件 ==nginx.conf== 中每一个 ==server{}== 都是一个虚拟主机（站点）。一般情况下，如果没有指定，那么第一个 ==server{}== 就是默认虚拟主机的配置。</p>
+<p>当然， 我们还可以指定，可以在 ==server{==} 里面的 ==listen 80== 后面加上 ==default_server== ，这样就指明这个 ==server{}== 是默认虚拟主机。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linsten 80 default_server;        <span class="comment">#以80端口为例</span></span><br></pre></td></tr></table></figure>
+<p>通常为了规范，并不会在主配置文件下配置好多个 ==server{}== ，而是在 ==conf== 目录下面创建 ==vhost==目录，然后在 ==vhost== 目录下创建虚拟主机的配置文件，只需要在主配置文件中加上一行：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">cat /nginx/conf/nginx.conf</span><br><span class="line">user nobody;</span><br><span class="line">worker_processes 8;</span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line">http &#123;</span><br><span class="line">    include       mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line">    sendfile        on;</span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#    server &#123;</span></span><br><span class="line"><span class="comment">#        listen       80;</span></span><br><span class="line"><span class="comment">#        server_name  localhost;</span></span><br><span class="line"><span class="comment">#        location / &#123;</span></span><br><span class="line"><span class="comment">#            root   html;</span></span><br><span class="line"><span class="comment">#            index  index.html index.htm;</span></span><br><span class="line"><span class="comment">#        &#125;</span></span><br><span class="line"><span class="comment">#        error_page   500 502 503 504  /50x.html;</span></span><br><span class="line"><span class="comment">#        location = /50x.html &#123;</span></span><br><span class="line"><span class="comment">#            root   html;</span></span><br><span class="line"><span class="comment">#        &#125;</span></span><br><span class="line"><span class="comment">#    &#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">include vhost/*.conf;   <span class="comment"># 新增行</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>下面来简单测试一下：</p>
+<ul>
+<li><p>创建两个server{}配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">mkdir -pv /data/wwwroot/www.1.com /data/wwwroot/www.2.com</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"www.1.com"</span> &gt; /data/wwwroot/www.1.com/index.html</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"www.2.com"</span> &gt; /data/wwwroot/www.2.com/index.html</span><br><span class="line"></span><br><span class="line">mkdir /usr/<span class="built_in">local</span>/nginx/conf/vhost</span><br><span class="line"></span><br><span class="line">vim /usr/<span class="built_in">local</span>/nginx/conf/vhost/www.1.com.conf          <span class="comment">#写入下面内容</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.1.com;</span><br><span class="line">    root /data/wwwroot/www.1.com;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">vim /usr/<span class="built_in">local</span>/nginx/conf/vhost/www.2.com.conf          <span class="comment">#写入下面内容</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name www.2.com;</span><br><span class="line">    root /data/wwwroot/www.2.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重载Nginx配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -t</span><br><span class="line">nginx: the configuration file /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf <span class="built_in">test</span> is successful</span><br><span class="line"></span><br><span class="line">/usr/<span class="built_in">local</span>/nginx/sbin/nginx -s reload</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl -x127.0.0.1:80 www.1.com</span><br><span class="line">www.1.com</span><br><span class="line"></span><br><span class="line">curl -x127.0.0.1:80 www.2.com</span><br><span class="line">www.2.com</span><br><span class="line"></span><br><span class="line">curl -x127.0.0.1:80 www.3.com          <span class="comment">#可以看出来，www.1.com是默认虚拟主机，虽然我们没有指定</span></span><br><span class="line">www.1.com</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>一般情况下，我们需要指定默认虚拟主机，因为不指定就是排在第一个的 ==server{}== 是默认虚拟主机，这样有点不稳定。</p>
+<ul>
+<li><p>指定默认虚拟主机</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim /usr/<span class="built_in">local</span>/nginx/conf/vhost/default.conf             <span class="comment">#写入下面内容</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80 default_server;                            <span class="comment">#指定默认虚拟主机</span></span><br><span class="line">    deny all;                                            <span class="comment">#将非该服务器上的站点访问拒绝</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@LenovoBox ~] nginx -t</span><br><span class="line">nginx: the configuration file /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf <span class="built_in">test</span> is successful</span><br><span class="line"></span><br><span class="line">[root@LenovoBox ~] nginx -s reload</span><br><span class="line"></span><br><span class="line">[root@LenovoBox ~] curl -x127.0.0.1:80 www.3.com</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;                   <span class="comment"># 访问被拒绝</span></span><br><span class="line">&lt;hr&gt;&lt;center&gt;nginx/1.16.1&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这样看起来就比较合理，服务器上没有的站点一律拒绝访问，而不是指向默认虚拟主机。</p>
+<h2 id="虚拟主机配置规范"><a href="#虚拟主机配置规范" class="headerlink" title="虚拟主机配置规范"></a>虚拟主机配置规范</h2><p>一般规范来说，在主配置文件中 ==include== 虚拟主机配置文件，然后在 ==conf== 目录下创建 ==vhost== 目录，在 ==vhost==目录下定义虚拟主机配置，也就是 ==server{}== 配置部分。</p>
+<p>上面在指定默认虚拟主机前的访问我们在 ==<a href="http://www.1.com.conf==" target="_blank" rel="noopener">www.1.com.conf==</a> 和 ==<a href="http://www.2.com.conf==" target="_blank" rel="noopener">www.2.com.conf==</a> 中没有指定index（索引页），它默认会访问 ==index.html== ，那如果指定的index不是 ==index.html== 呢？</p>
+<ul>
+<li><p>指定index</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cat www.1.com.conf </span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name www.1.com;</span><br><span class="line">	index 2.html;</span><br><span class="line">	root /data/wwwroot/www.1.com;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问测试：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br><span class="line"></span><br><span class="line">curl -x127.0.0.1:80 www.1.com</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;&lt;title&gt;403 Forbidden&lt;/title&gt;&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;&lt;h1&gt;403 Forbidden&lt;/h1&gt;&lt;/center&gt;             <span class="comment">#提示403禁止访问，索引页有个特性：找不到会提示403，而不是404</span></span><br><span class="line">&lt;hr&gt;&lt;center&gt;nginx/1.16.1&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"2.html"</span> &gt; /data/wwwroot/www.1.com/2.html</span><br><span class="line"></span><br><span class="line">curl -x127.0.0.1:80 www.1.com   </span><br><span class="line">2.html                                              <span class="comment">#有了1.html之后就会默认访问到索引页</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>同时， ==server{}== 配置部分还支持域名泛解析，一个主域名下面可能会有很多个二级域名，这就会用到泛解析。</p>
+<ul>
+<li><p>指定泛解析</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">cat graped.com.conf </span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name graped.com  *.graped.com;          <span class="comment"># 连主域名一起访问到index，可以以空格分隔域名：</span></span><br><span class="line">	root /data/wwwroot/graped.com;</span><br><span class="line">	index index.html;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mkdir -pv /data/wwwroot/graped.com</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"graped"</span> &gt; /data/wwwroot/graped.com/index.html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">curl -x127.0.0.1:80 graped.com</span><br><span class="line">graped</span><br><span class="line">curl -x127.0.0.1:80 1.graped.com</span><br><span class="line">graped</span><br><span class="line">curl -x127.0.0.1:80 2.graped.com</span><br><span class="line">graped</span><br><span class="line">curl -x127.0.0.1:80 sdfasdfasdklasdopweriqweorisdaf.graped.com</span><br><span class="line">graped</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="基于不同端口的虚拟主机"><a href="#基于不同端口的虚拟主机" class="headerlink" title="基于不同端口的虚拟主机"></a>基于不同端口的虚拟主机</h2><p>虚拟主机不一定是监听80端口，只不过同一端口下的域名不能重复，不同端口下的域名是可以重复的。</p>
+<ul>
+<li><p>定义同端口相同域名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">cat www.1.com.bak.conf </span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name www.1.com;</span><br><span class="line">	index index.html;</span><br><span class="line">	root /data/wwwroot/www.1.com.bak;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"> cat www.1.com.conf </span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name www.1.com;</span><br><span class="line">	index 2.html;</span><br><span class="line">	root /data/wwwroot/www.1.com;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">nginx -t </span><br><span class="line">nginx: [warn] conflicting server name <span class="string">"www.1.com"</span> on 0.0.0.0:80, ignored    <span class="comment">#会有报错提示，server name 冲突</span></span><br><span class="line">nginx: the configuration file /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf syntax is ok</span><br><span class="line">nginx: configuration file /usr/<span class="built_in">local</span>/nginx/conf/nginx.conf <span class="built_in">test</span> is successful</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>定义不同端口相同域名：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">cat www.1.com.conf </span><br><span class="line">server &#123;</span><br><span class="line">	listen 80;</span><br><span class="line">	server_name www.1.com;</span><br><span class="line">	index 2.html;</span><br><span class="line">	root /data/wwwroot/www.1.com;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">cat www.1.com.bak.conf </span><br><span class="line">server &#123;</span><br><span class="line">	listen 8080;</span><br><span class="line">	server_name www.1.com;</span><br><span class="line">	index index.html;</span><br><span class="line">	root /data/wwwroot/www.1.com.bak;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mkdir -pv /data/wwwroot/www.1.com.bak</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"www.1.com:8080"</span> &gt; /data/wwwroot/www.1.com.bak/index.html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问测试</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -x127.0.0.1:80 www.1.com</span><br><span class="line">www.1.com</span><br><span class="line"></span><br><span class="line">curl -x127.0.0.1:8080 www.1.com</span><br><span class="line">www.1.com:8080</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
       
     </div>
@@ -466,7 +504,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="http://www.grapedlinux.cn/2017/04/03/17040301/" title="Nginx主要应用场景">http://www.grapedlinux.cn/2017/04/03/17040301/</a>
+    <a href="http://www.grapedlinux.cn/2020/02/18/Nginx-虚拟主机/" title="Nginx 虚拟主机">http://www.grapedlinux.cn/2020/02/18/Nginx-虚拟主机/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>
@@ -481,7 +519,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/linux/" rel="tag"># linux</a>
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
           
         </div>
       
@@ -494,8 +532,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/02/17040202/" rel="next" title="Zabbix安装配置">
-                <i class="fa fa-chevron-left"></i> Zabbix安装配置
+              <a href="/2020/01/05/Nginx配置文件详解/" rel="next" title="Nginx配置文件详解">
+                <i class="fa fa-chevron-left"></i> Nginx配置文件详解
               </a>
             
           </div>
@@ -503,10 +541,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/04/17040401/" rel="prev" title="nginx+tomcat 配置负载均衡集群">
-                nginx+tomcat 配置负载均衡集群 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -677,7 +711,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx能做什么"><span class="nav-number">2.</span> <span class="nav-text">Nginx能做什么</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-反向代理"><span class="nav-number">2.1.</span> <span class="nav-text">1. 反向代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-负载均衡"><span class="nav-number">2.2.</span> <span class="nav-text">2. 负载均衡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-HTTP服务器（包含动静分离）"><span class="nav-number">2.3.</span> <span class="nav-text">3. HTTP服务器（包含动静分离）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-正向代理"><span class="nav-number">2.4.</span> <span class="nav-text">4. 正向代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向代理"><span class="nav-number">2.5.</span> <span class="nav-text">反向代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#负载均衡"><span class="nav-number">2.6.</span> <span class="nav-text">负载均衡</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1、RR（默认）"><span class="nav-number">2.6.1.</span> <span class="nav-text">1、RR（默认）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2、权重"><span class="nav-number">2.6.2.</span> <span class="nav-text">2、权重</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3、ip-hash"><span class="nav-number">2.6.3.</span> <span class="nav-text">3、ip_hash</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4、fair（第三方）"><span class="nav-number">2.6.4.</span> <span class="nav-text">4、fair（第三方）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5、url-hash（第三方）"><span class="nav-number">2.6.5.</span> <span class="nav-text">5、url_hash（第三方）</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#HTTP服务器"><span class="nav-number">2.7.</span> <span class="nav-text">HTTP服务器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#动静分离"><span class="nav-number">2.8.</span> <span class="nav-text">动静分离</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#正向代理"><span class="nav-number">2.9.</span> <span class="nav-text">正向代理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#补充"><span class="nav-number">2.10.</span> <span class="nav-text">补充</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Nginx虚拟主机配置"><span class="nav-number">1.</span> <span class="nav-text">Nginx虚拟主机配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nginx默认虚拟主机"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx默认虚拟主机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟主机配置规范"><span class="nav-number">1.2.</span> <span class="nav-text">虚拟主机配置规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于不同端口的虚拟主机"><span class="nav-number">1.3.</span> <span class="nav-text">基于不同端口的虚拟主机</span></a></li></ol></li></ol></div>
             
 
           </div>
